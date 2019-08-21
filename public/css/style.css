@@ -1,3 +1,4 @@
+
 /*NAVBAR*/
 .navbar-title, .navbar-subtitles:hover {
     background: linear-gradient(TO RIGHT, RGB(54, 181, 75), RGB(244, 255, 248))!important;
@@ -174,8 +175,13 @@
 }
 
 .well:hover {
-    transform: scale(1.06);
+    transform: scale(1.04);
     box-shadow: 3px 3px 3px 3px RGB(54, 181, 75);
+}
+
+/* SIDEBAR */
+.sidebar-margin-left {
+    margin-left: 8.3%;
 }
 
 /*READ BUTTOM*/
