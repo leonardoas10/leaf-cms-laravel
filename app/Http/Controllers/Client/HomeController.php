@@ -21,6 +21,7 @@ class HomeController extends Controller
         else {
             $posts = Post::paginate(3);
         }
+
         return view('client.index', ['posts' => $posts]);
     }
 

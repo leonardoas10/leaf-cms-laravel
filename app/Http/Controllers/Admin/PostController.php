@@ -5,39 +5,32 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
+use App\User;
+//  use App\Http\Requests\PostStoreRequest; TODO validacion
+
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $posts = Post::all();   
         return view('admin.post', ['posts' => $posts]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
-        return view('admin.add_post');
+        $categories = Category::all();
+        $users = User::all();   
+        return view('admin.add_post', compact('categories', 'users'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+ 
+    public function store(PostStoreRequest $request)
     {
-        //
+        Post::create(request()->all());
+             
+        return redirect('admin/posts'); 
     }
 
     /**
@@ -51,15 +44,11 @@ class PostController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $users = User::all();  
+        $categories = Category::all();
+        return view('admin.edit_post', compact('post','users','categories'));
     }
 
     /**
@@ -69,19 +58,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Post $post)
     {
-        //
+        $post->update(request()->all());
+        return redirect('admin/posts'); 
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect('admin/posts');
     }
 }

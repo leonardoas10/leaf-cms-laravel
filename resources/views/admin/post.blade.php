@@ -51,14 +51,15 @@
                     <td class='links-color'><a href="{{ route('post.show', $post->id ) }}">View Post </a></td>
                     <td class='links-color'><a href='post_comments.php?id=$post_id'>$count_comment</a></td>
                     </form>
-                    <form method="post" id="actions">
-                        <input type='hidden' class='_id' name='edit' value=''>
-                        <td><input rel='' class='btn-xs btn-success submit-buttons edit_link' type='submit' name='edit' value='Edit'></td>
-                        <td><input rel='' class='btn-xs btn-danger del_link' type='submit' name='delete' value='Delete'></td>
+                    <td><a href="{{ route('posts.edit', $post->id ) }}" class='btn-xs btn-success submit-buttons edit_link' name='edit'>Edit</a></td>
+                    <form action="{{ route('posts.destroy', $post->id ) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <td><input class='btn-xs btn-danger del_link' type='submit' value="Delete"></td>
                     </form>
+                    
                 </tr> 
                 @endforeach
-                
             </tbody>
         </div>
     </table>
