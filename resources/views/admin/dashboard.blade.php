@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
 
-                        <div class='huge'>Column</div>
+                        <div class='huge'>{{$posts->count()}}</div>
                         <div>Posts</div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                         <i class="fa fa-comments fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class='huge'>Column</div>
+                        <div class='huge'>{{$comments->count()}}</div>
 
                         <div>Comments</div>
                     </div>
@@ -57,7 +57,7 @@
                         <i class="fa fa-user fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class='huge'>Column</div>
+                        <div class='huge'>{{$users->count()}}</div>
                         <div> Users</div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                         <i class="fa fa-list fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class='huge'>Column</div>
+                        <div class='huge'>{{$categories->count()}}</div>
                         <div>Categories</div>
                     </div>
                 </div>

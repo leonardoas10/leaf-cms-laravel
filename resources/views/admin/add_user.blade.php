@@ -1,16 +1,17 @@
 @extends('admin.adminlayout')
 @section('content')
-<form action="" method="post" enctype="multipart/form-data">
+<form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
+    @csrf
     <div class="form-group">
-        <label for="user_firstname">Firstname</label>
-        <input type="text" class="form-control input-background" name="user_firstname">
+        <label for="firstname">Firstname</label>
+        <input type="text" class="form-control input-background" name="firstname">
     </div>
     <div class="form-group">
-        <label for="user_lastname">Lastname</label>
-        <input type="text" class="form-control input-background" name="user_lastname">
+        <label for="lastname">Lastname</label>
+        <input type="text" class="form-control input-background" name="lastname">
     </div>
     <div class="form-group">
-        <select name="user_role" id="" class="input-background">
+        <select name="role" id="" class="input-background">
             <option value="Subscriber">Select Option</option>
             <option value="Admin">Admin</option>
             <option value="Subscriber">Subscriber</option>
@@ -21,15 +22,15 @@
         <input type="text" class="form-control input-background" name="username">
     </div>
     <div class="form-group">
-        <label for="user_email">Email</label>
-        <input type="email" class="form-control input-background" name="user_email">
+        <label for="email">Email</label>
+        <input type="email" class="form-control input-background" name="email">
     </div>
     <div class="form-group">
-        <label for="user_password">Password</label>
-        <input type="password" class="form-control input-background" name="user_password">
+        <label for="password">Password</label>
+        <input type="password" class="form-control input-background" name="password">
     </div>
     <div class="form-group">
-        <input class="btn btn-success submit-buttons" type="submit" name="create_user" value="Add User">
+        <input class="btn btn-success submit-buttons" type="submit" value="Add User">
     </div>
 </form>
 @endsection

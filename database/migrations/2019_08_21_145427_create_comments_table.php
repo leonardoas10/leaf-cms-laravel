@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('author');
             $table->string('email');
             $table->text('content');
-            $table->string('status')->default('Draft');
+            $table->string('status')->default('Unapproved');
             $table->timestamps();
         });
     }

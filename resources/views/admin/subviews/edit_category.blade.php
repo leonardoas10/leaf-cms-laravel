@@ -1,21 +1,6 @@
 @extends('admin.adminlayout')
 @section('content')
 
-@if (Request::is('*/edit'))
-<div class="col-xs-6">
-<form method="post" action="{{ route('categories.update', $category->id ) }}">
-        @method("PATCH")
-        @csrf
-        <div class="form-group">
-            <label for="cat_title"> Update Category </label>
-        <input class="form-control input-background" type="=text" name="title" value="{{$category->title}}">
-        </div>
-        <div class="form-group ">
-            <input class="btn btn-success submit-buttons" type="submit" name="submit" value="Update Category">
-        </div>
-</form>  
-</div>  
-@else
 <div class="col-xs-6">
     <form method="post">
         @csrf
@@ -27,9 +12,21 @@
             <input class="btn btn-success submit-buttons" type="submit" name="submit" value="Add Category">
         </div>
     </form>
-</div>
-
+    <form method="post" action="{{ route('categories.update', $category->id ) }}">
+            @method("PATCH")
+            @csrf
+            <div class="form-group">
+                <label for="cat_title"> Update Category </label>
+            <input class="form-control input-background" type="=text" name="title" value="{{$category->title}}">
+            </div>
+            <div class="form-group ">
+                <input class="btn btn-success submit-buttons" type="submit" name="submit" value="Update Category">
+            </div>
+    </form>
+    @if (Request::is('*/edit'))
+    aaaaaa
 @endif
+</div>
 <form method="post">
     @csrf
 <div class="col-xs-6">
@@ -59,12 +56,7 @@
                 <td>{{$category->id}}</td>
                 <td>{{$category->title}}</td>
             </form>
-            {{-- TODO --}}
-            @if (Request::is('*/edit'))
-            <td><a href="{{ route('categories.index') }}" class='btn-xs btn-success submit-buttons edit_link' name='edit'>Create</a></td>
-            @else
             <td><a href="{{ route('categories.edit', $category->id ) }}" class='btn-xs btn-success submit-buttons edit_link' name='edit'>Edit</a></td>
-            @endif
             <form action="{{ route('categories.destroy', $category->id ) }}" method="POST">
                 @csrf
                 @method('DELETE')
@@ -76,3 +68,4 @@
     </table>
 </div>
 @endsection
+

@@ -9,7 +9,8 @@
                 <div class="col-xs-6 col-xs-offset-3">
                     <div class="form-wrap">
                         <h1 class="text-center">Register</h1>
-                        <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
+                        <form role="form" action="{{ route('registration.store') }}" method="post" id="login-form" autocomplete="off">
+                            @csrf
                             <div class="form-group">
                                 <input type="text" name="firstname" id="firstname" class="form-control input-background" placeholder="FirstName">
                                 {{-- <p for=""><php echo isset($error['firstname']) ? $error['firstname'] : '' ?></> --}}

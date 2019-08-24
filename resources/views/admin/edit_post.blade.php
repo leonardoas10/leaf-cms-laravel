@@ -1,6 +1,5 @@
 @extends('admin.adminlayout')
 @section('content')
-EDIT
 <form action="{{ route('posts.update', $post->id ) }}" method="POST" enctype="multipart/form-data">
     @method('PATCH')
     @csrf
@@ -30,14 +29,19 @@ EDIT
             <option value="{{$post->status}}">{{$post->status}}</option>
         </select>
     </div>
-    //Image//
+    <div class="form-group">
+            <label for="image">Post Image</label>
+            <input type="file" class="form-control input-background" name="image">
+            <br>
+            <img width="100" src="{{asset('images/' . $post->image)}}">
+        </div>
     <div class="form-group">
         <label for="tags">Post Tags</label>
         <input type="text" class="form-control input-background" name="tags" value="{{$post->tags}}">
     </div>
     <div class="form-group">
         <label for="content">Post Content</label>
-        <textarea type="text" class="form-control" id="body" cols="30" rows="10" name="content">{{$post->content}} </textarea>
+        <textarea type="text" class="form-control" id="body" cols="30" rows="10" name="content">{{$post->content}}</textarea>
     </div>
     <div class="form-group">
         <input class="btn btn-success submit-buttons" type="submit" name="update_post" value="Publish Post">

@@ -49,7 +49,7 @@
                     <td>{{$post->views_count}}</td>
                     <td>{{$post->created_at}}</td>
                     <td class='links-color'><a href="{{ route('post.show', $post->id ) }}">View Post </a></td>
-                    <td class='links-color'><a href='post_comments.php?id=$post_id'>$count_comment</a></td>
+                    <td class='links-color'><a href='post_comments.php?id=$post_id'>{{$post->comments_count}}</a></td>
                     </form>
                     <td><a href="{{ route('posts.edit', $post->id ) }}" class='btn-xs btn-success submit-buttons edit_link' name='edit'>Edit</a></td>
                     <form action="{{ route('posts.destroy', $post->id ) }}" method="POST">
@@ -57,7 +57,6 @@
                         @method('DELETE')
                         <td><input class='btn-xs btn-danger del_link' type='submit' value="Delete"></td>
                     </form>
-                    
                 </tr> 
                 @endforeach
             </tbody>

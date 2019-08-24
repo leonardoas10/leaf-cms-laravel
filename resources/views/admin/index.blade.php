@@ -1,6 +1,6 @@
 @extends('admin.adminlayout')
 @section('content')
-
+{{-- // TODO JOIN BLADES INDEX AND DASHBOARD --}}
 <!-- /.row -->
 <div class="row">
     <div class="col-lg-4 col-md-6">
@@ -11,7 +11,7 @@
                         <i class="fa fa-file-text fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right"> 
-                            <div class='huge'>Column</div>
+                    <div class='huge'>{{$posts->count()}}</div>
                         <div>Posts</div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                         <i class="fa fa-comments fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                            <div class='huge'>Column</div>
+                            <div class='huge'>{{$comments->count()}}</div>
                         <div>Comments</div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         <i class="fa fa-list fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                            <div class='huge'>Column</div>
+                            <div class='huge'>{{$categories->count()}}</div>
                         <div>Categories</div>
                     </div>
                 </div>

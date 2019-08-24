@@ -24,27 +24,38 @@
                     <th>Lastname</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Change Role to</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($users as $user)
                 <tr>
                     <td><input class="checkBoxes" type="checkbox" name='checkBoxArray[]' value=' echo $user_id '></td>
-                    <td>$user_id</td>
-                    <td>$username</td>
-                    <td>$user_firstname</td>
-                    <td>$user_lastname</td>
-                    <td>$user_email</td>
-                    <td>$user_role</td>
-                    <td class='links-color'><a href='users.php?change_to_admin={$user_id}'>Admin</a></td>
-                    <td class='links-color'><a href='users.php?change_to_sub={$user_id}'>Subscriber</a></td>
-                        
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->username}}</td>
+                    <td>{{$user->firstname}}</td>
+                    <td>{{$user->lastname}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->role}}</td>
+                    @if ($user->role === "Admin")
+                        <td class='links-color'><a href="{{ route('change.updateRole', $user->id ) }}" value="Subscriber">Subscriber</a></td>
+                    @else
+                        <td class='links-color'><a href="{{ route('change.updateRole', $user->id ) }}" name="Admin">Admin</a></td>
+                    @endif           
 </form>
 <form method="post" id="actions">      
                     <input type='hidden' class='_id' name='edit' value=''>
-                    <td><input rel='$user_id' class='btn-xs btn-success submit-buttons edit_link' type='submit' value='Edit'></td>
-                    <td><input rel='$user_id' class='btn-xs btn-danger del_link' type='submit' name='delete' value='Delete'></td>                             
+                    <td><a href="{{ route('users.edit', $user->id ) }}" class='btn-xs btn-success submit-buttons edit_link' name='edit'>Edit</a></td>
+                           
 </form>
+                    <form action="{{ route('users.destroy', $user->id ) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <td><input class='btn-xs btn-danger del_link' type='submit' value="Delete"></td>
+                    </form>
                 </tr>
+                @endforeach 
     </tbody>
 </table>
 @endsection
+                    

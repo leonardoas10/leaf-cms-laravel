@@ -24,9 +24,13 @@ class PostStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required'|'min:3',
-            'content' => 'required'|'min:3', //TODO min:30
-            'tags' => 'required'|'min:3'
+            'title' => 'required',
+            'category_id' => 'required',
+            'user' => 'required',
+            'content' => 'required',
+            'tags' => 'required',
+            'status' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }

@@ -30,6 +30,10 @@
         </select>
     </div>
     // Imagen //    
+    <div class="form-group">
+        <label for="image">Post Image</label>
+        <input type="file" class="form-control input-background" name="image">
+    </div>
     {{-- <div class="form-group">
         <label for="image_box">Post Image</label>
         <input type="file" class="form-control input-background" name="image_box">
