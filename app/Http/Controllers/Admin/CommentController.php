@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 
 use App\Comment;
@@ -23,9 +24,14 @@ class CommentController extends Controller
 
     public function store(Post $post)
     {
-        $post->comments()->create(request()->all());
-             
-        return redirect('/'); // TODO CHANGE THS
+        $attributes = request()->validate([
+            'author' => 'required',
+            'email' => 'required',
+            'content' => 'required'
+        ]);
+        $post->addComment($attributes);
+
+        return back();
     }
 
     public function show(Comment $comment)
@@ -40,8 +46,11 @@ class CommentController extends Controller
 
     public function update(Comment $comment)
     {
-        dd("aqui update");
-        $comment->request()->has('status') ? 'approved' : 'unapproved';
+        if (request()->status === "Approved") {
+            $comment->approved();
+        } else {
+            $comment->unapproved();
+        }
 
         return back();
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \App\Category;
 use \App\Post;
+use \App\Comment;
 
 class HomeController extends Controller
 {
@@ -22,11 +23,11 @@ class HomeController extends Controller
             $posts = Post::paginate(3);
         }
 
-        return view('client.index', ['posts' => $posts]);
+        return view('client.index', compact('posts'));
     }
 
     public function show(Post $post) {
         $post->incrementViews();
-        return view('client.subviews.post', ['post' => $post]);
+        return view('client.subviews.post', compact('post'));
     }
 }

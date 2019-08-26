@@ -8,7 +8,8 @@
     color: var(--color) !important;
     margin-right: -20px;
     margin-left: 30px;
-    font-size: 30px !important;
+    line-height: 0.7 !important;
+    font-size: 25px !important;
 }
 /*TR BACKGROUND*/
 .tr-background>tbody>tr:hover {

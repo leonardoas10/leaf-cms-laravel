@@ -1,6 +1,5 @@
 @extends('admin.adminlayout')
 @section('content')
-<form action="" method="post">
 <table class="table table-bordered table-hover">
     <div class="row">
         <div id="bulkOptionsContainer" class="col-xs-4">
@@ -37,12 +36,12 @@
                     <td>{{$user->lastname}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role}}</td>
-                    @if ($user->role === "Admin")
-                        <td class='links-color'><a href="{{ route('change.updateRole', $user->id ) }}" value="Subscriber">Subscriber</a></td>
-                    @else
-                        <td class='links-color'><a href="{{ route('change.updateRole', $user->id ) }}" name="Admin">Admin</a></td>
-                    @endif           
-</form>
+                    <form action="{{ route('change.updateRole', $user->id ) }}" method="POST">
+                            @method('PATCH')
+                            @csrf
+                                <td><input type="submit" class='btn-xs btn-success submit-buttons edit_link' name="role" value="{{$user->role === "Admin" ? "Subscriber" : "Admin"}}"></td>
+                    </form>        
+
 <form method="post" id="actions">      
                     <input type='hidden' class='_id' name='edit' value=''>
                     <td><a href="{{ route('users.edit', $user->id ) }}" class='btn-xs btn-success submit-buttons edit_link' name='edit'>Edit</a></td>

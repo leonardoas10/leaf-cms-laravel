@@ -1,6 +1,6 @@
 @extends('admin.adminlayout')
 @section('content')
-<form action="" method="post">
+
     <table class="table table-bordered table-hover">
         <div class="row">
             <div id="bulkOptionsContainer" class="col-xs-4">
@@ -58,5 +58,5 @@
                 </tbody>
             </table>
     </table>
-</form>
+
 @endsection

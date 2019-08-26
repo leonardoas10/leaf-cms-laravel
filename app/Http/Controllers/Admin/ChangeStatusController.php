@@ -10,13 +10,15 @@ class ChangeStatusController extends Controller
 {
     public function updateRole(User $user)
     {
-        // TODO
-        // $a = request()->all();
-        // dd($user->id);
-        // if(request('Subscriber')) {
-        //     dd('its subscriber');
-        // }
-        // $user->update(request()->all());
-        return redirect('admin/users'); 
+
+        if (request()->role === "Admin") {
+            // $user->admin();
+            $user->update(['role' => User::admin]);
+        } else {
+            // $user->subscriber();
+            $user->update(['role' => User::subscriber]);
+        }
+
+        return back();
     }
 }

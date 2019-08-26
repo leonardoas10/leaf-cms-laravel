@@ -34,9 +34,10 @@ Route::prefix('admin')->group(function(){
     Route::get('/dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
     Route::resource('posts', 'Admin\PostController');
     Route::resource('categories', 'Admin\CategoryController');
-    Route::resource('comments', 'Admin\CommentController');
+    Route::resource('comments', 'Admin\CommentController')->except(['store']);
+    Route::post('/post/{post}/comments', 'Admin\CommentController@store')->name('post.comment.store');
     Route::resource('users', 'Admin\UserController');
     Route::resource('profile', 'Admin\UserController');
 
-    Route::get('/status/{status}', 'Admin\ChangeStatusController@updateRole')->name('change.updateRole');
+    Route::patch('/status/{status}', 'Admin\ChangeStatusController@updateRole')->name('change.updateRole');
 });

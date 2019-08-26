@@ -17,6 +17,9 @@ class Post extends Model
     {
       return $this->hasMany(Comment::class);
     }
+    public function addComment($comment) {
+      $this->comments()->create($comment);
+    }
 
     public function incrementViews() {
       return $this->increment('views_count');

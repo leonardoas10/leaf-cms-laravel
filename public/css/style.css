@@ -32,6 +32,7 @@
 .leaf-icon {
     color: var(--color) !important;
     font-size: 30px !important;
+    line-height: 0.7 !important;
 }
 .time-icon, .email-icon, .user-icon, .wallet-icon, .check-icon, .like-icon {
     color: var(--color) !important;

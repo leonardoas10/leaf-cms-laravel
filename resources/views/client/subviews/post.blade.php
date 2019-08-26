@@ -14,7 +14,7 @@
     <!-- Comments Form -->
     <div class="well">
         <h4>Leave a Comment:</h4>
-        <form role="form" action="{{ route('comments.store', ['post_id'=> $post->id]) }}" method="post">
+    <form role="form" action="{{ route('post.comment.store', $post) }}" method="post">
             @csrf
             <div class="form-group">
                 <label for="Author">Author</label>
@@ -33,19 +33,22 @@
     </div>
 
     <!-- Comment -->
-    <div class="media">
-        <a class="pull-left" href="#">
-            <img class="media-object" src="http://placehold.it/64x64" alt="">
-        </a>
-        <div class="media-body">
-            <h4 class="media-heading">
-                <small></small>
-            </h4>
-            <span>contenido</span>
-
-            <!-- End Nested Comment -->
+    @foreach ($post->comments as $comment)
+        <div class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object" src="http://placehold.it/64x64" alt="">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">{{$comment->author}}
+                <small>{{$comment->created_at}}</small>
+                </h4>
+            <span>{{$comment->content}}</span>
+    
+                <!-- End Nested Comment -->
+            </div>
         </div>
-    </div>
+    @endforeach
+    
 </div>
 @include('client/sidebar')
 @endsection

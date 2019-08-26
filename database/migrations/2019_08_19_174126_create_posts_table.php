@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->string('tags');
             $table->string('status');
             $table->integer('views_count');
+            $table->integer('comments_count');
             $table->integer('likes');
             $table->timestamps();
         });
