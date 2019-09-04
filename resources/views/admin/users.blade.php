@@ -1,9 +1,9 @@
 @extends('admin.adminlayout')
 @section('content')
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover tr-background">
     <div class="row">
         <div id="bulkOptionsContainer" class="col-xs-4">
-            <select class="form-control input-background" id="" name="bulk_options">
+            <select class="form-control input-background" id="bulk_options" name="bulk_options">
                 <option value="">Select Options</option>
                 <option value="Admin">Admin</option>
                 <option value="Subscriber">Subscriber</option>
@@ -11,50 +11,60 @@
             </select>
         </div>
         <div class="col-xs-4">
-            <input type="submit" name="submit" class="btn btn-success submit-buttons" value="Apply">
+            <input type="button" name="submit" id="apply" class="btn btn-success submit-buttons" value="Apply">
         </div>
-        <table class="table table-bordered table-hover tr-background">
-            <thead>
-                <tr>
-                    <th><input id="selectAllBoxes" type="checkbox"></th>
-                    <th>Id</th>
-                    <th>Username</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Change Role to</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
-                <tr>
-                    <td><input class="checkBoxes" type="checkbox" name='checkBoxArray[]' value=' echo $user_id '></td>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->username}}</td>
-                    <td>{{$user->firstname}}</td>
-                    <td>{{$user->lastname}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->role}}</td>
-                    <form action="{{ route('change.updateRole', $user->id ) }}" method="POST">
-                            @method('PATCH')
-                            @csrf
-                                <td><input type="submit" class='btn-xs btn-success submit-buttons edit_link' name="role" value="{{$user->role === "Admin" ? "Subscriber" : "Admin"}}"></td>
-                    </form>        
-
-<form method="post" id="actions">      
-                    <input type='hidden' class='_id' name='edit' value=''>
-                    <td><a href="{{ route('users.edit', $user->id ) }}" class='btn-xs btn-success submit-buttons edit_link' name='edit'>Edit</a></td>
-                           
-</form>
-                    <form action="{{ route('users.destroy', $user->id ) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <td><input class='btn-xs btn-danger del_link' type='submit' value="Delete"></td>
-                    </form>
-                </tr>
-                @endforeach 
-    </tbody>
+        <thead>
+            <tr>
+                <th class="table-column-size-check-all"><input id="selectAllBoxes" type="button" class="uncheck btn-xs btn-success submit-buttons" value="Check All"></th>
+                <th class="table-column-size-id">ID</th>
+                <th>Username</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th class='table-column-size-th'>Change Role to</th>
+                <th class="table-column-size-button-th">Edit</th>
+                <th class="table-column-size-button-th">Delete</th>
+                <th class="table-column-size-button-th">Online/Offline</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($users as $user)
+            <tr>
+                <td><input class="checkBoxes table-column-size-button-td" type="checkbox" value='{{$user->id}}'></td>
+                <td class="table-column-size-id">{{$user->id}}</td>
+                <td>{{$user->username}}</td>
+                <td>{{$user->firstname}}</td>
+                <td>{{$user->lastname}}</td>
+                <td class="table-column-size-email">{{$user->email}}</td>
+                <td class="table-column-size-role">{{$user->role}}</td>
+                <form action="{{ route('change.updateRole', $user->id ) }}" method="POST">
+                        @method('PATCH')
+                        @csrf
+                        <td><input type="submit" class='btn-xs btn-success submit-buttons table-column-size-change-role' name="role" value="{{$user->role === "Admin" ? "Subscriber" : "Admin"}}"></td>
+                </form>        
+                <form action="{{ route('users.edit', $user->id ) }}">  
+                @csrf    
+                    <td><input type="submit" class='btn-xs btn-success submit-buttons table-column-size-button-td' value='Edit'></td>                    
+                </form>
+                <form action="{{ route('users.destroy', $user->id ) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <td><input class='btn-xs btn-danger table-column-size-button-td ' type='submit' value="Delete"></td>
+                </form>
+                @if ($user->userIsOnline())
+                    <td>Online <i class="fa fa-check-circle"></i></td>
+                @else 
+                    <td>Offline <i class="fa fa-times-circle"></i></td>
+                @endif
+            </tr>
+            @endforeach 
+        </tbody>
+    </div>
 </table>
 @endsection
+
+@push('scripts')
+<script>bulkOperations('user', "{{ csrf_token() }}");</script>
+@endpush
                     

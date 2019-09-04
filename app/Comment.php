@@ -21,4 +21,5 @@ class Comment extends Model
     {
         return $this->update(['status' => 'Unapproved']);
     }
+    
 }

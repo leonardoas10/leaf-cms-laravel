@@ -9,12 +9,16 @@
     <meta name="author" content="">
 
     <title>CMS Laravel PROYECT</title>
+     <!-- Scripts -->
+     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/blog-home.css')}}" type="text/css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/home.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/common.css')}}" type="text/css">
 </head>
 
 <body>
@@ -36,19 +40,30 @@
                     @foreach ($categories as $category)
                     <li class=""><a class="navbar-subtitles" href="{{route('category.index', ['category' => $category->id])}}">{{$category->title}}</a></li>
                     @endforeach
-                    <li class=""><a class="navbar-subtitles" href='/contact'>Contact Us</a></li>
+                    <li class=""><a class="navbar-subtitles" href="{{ route('contact.index') }}">Contact Us</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class=""><a class="navbar-subtitles" href="/admin">Admin</a></li>
-                    <li class=""><a class="navbar-subtitles" href="/login">Login</a></li>
-                    <li class=""><a class="navbar-subtitles" href="/registration">Registration</a></li>
+                    @if (auth()->user())
+                        <li><a class="navbar-subtitles" href="{{ route('admin.index') }}">Admin</a></li>
+                        <li><a class="navbar-subtitles" href="{{ route('logout') }}" 
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a></li>   
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @else
+                        <li class=""><a class="navbar-subtitles" href="{{ route('login') }}">Login</a></li>
+                        <li class=""><a class="navbar-subtitles" href="{{ route('register') }}">Registration</a></li>
+                    @endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
-
     <div class="container">
             <div class="row">
                 @yield('content')

@@ -95,5 +95,32 @@
     </div>
 </div>
 <!-- /.row -->
+@push('google_chars')
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ["Element", "Count", { role: "style" } ],
+            ["All Posts", {{$posts->count()}}, "#337ab7"],
+            ["Active Posts", {{$posts->where('status', '=', 'Published')->count()}}, "#337ab7"],
+            ["Draft Posts", {{$posts->where('status', '=', 'Draft')->count()}}, "#337ab7"],
+            ["Comments", {{$comments->count()}}, "#5cb85c"],
+            ["Pending Comments", {{$comments->where('status', '=', 'Unapproved')->count()}}, "#5cb85c"],
+            ["Users", {{$users->count()}}, "#f0ad4e"],
+            ["Admins", {{$users->where('role', '=', 'Admin')->count()}}, "#f0ad4e"],
+            ["Subscribers", {{$users->where('role', '=', 'Subscriber')->count()}}, "#f0ad4e"],
+            ["Categories", {{$categories->count()}}, "#d9534f"],
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        var options = { legend: { position: "none" } };
+        var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+        chart.draw(view, options);    
+        }
+    </script> 
+@endpush
+<div id="chart_div"  style="width: 'auto'; height: 400px;"></div>
 @endsection
 

@@ -27,6 +27,11 @@
     <div class="form-group">
         <select name="status" id="" class="input-background">
             <option value="{{$post->status}}">{{$post->status}}</option>
+            @if ($post->status === "Published")
+                <option value="Draft">Draft</option>
+            @else
+                <option value="Published">Published</option>
+            @endif
         </select>
     </div>
     <div class="form-group">

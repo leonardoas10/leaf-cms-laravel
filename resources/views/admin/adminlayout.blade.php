@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,11 +14,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/sb-admin.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/loader.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/admin.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/common.css')}}" type="text/css">
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" type="text/css">
-
-    <script src="js/jquery.js"></script>
 </head>
 
 <body>
@@ -39,18 +37,26 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li><a class="navbar-subtitles" href="">Users Online: <span class="usersonline"></span></a></li>
+                <li><a class="navbar-subtitles" href="">Users Online: {{auth()->user()->count()}} <span class="usersonline"></span></a></li>
                 <li><a class="navbar-subtitles" href="/">Home Site</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle " data-toggle="dropdown"><i
                             class="fa fa-user navbar-subtitles"></i>
-                            Username
+                            {{auth()->user()->username}}
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="../admin/profile.php"><i class="fa fa-fw fa-user navbar-subtitles"></i> Profile</a>
+                        <li><a href="{{ route('users.show', 1) }}"><i class="fa fa-fw fa-user navbar-subtitles"></i> Profile</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>
+                        <li><a class="navbar-subtitles" href="{{ route('logout') }}" 
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('Log Out') }}
+                        </a></li>   
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </ul>
                 </li>
             </ul>
@@ -68,17 +74,18 @@
                         </ul>
                     </li>
                     <li><a href="{{ route('categories.index') }}"><i class="fa fa-fw fa-wrench"></i> Categories</a></li>
-                    <li class=""><a href="{{ route('comments.index') }}"><i class="fa fa-fw fa-file"></i> Comments</a>
+                    <li class=""><a href="{{ route('comments.index') }}"><i class="fa fa-fw fa-comment"></i> Comments</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i
-                                class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
+                                class="fa fa-users"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse navbar-vertical">
                             <li><a href="{{ route('users.index') }}">View All Users</a></li>
                             <li><a href="{{ route('users.create') }}">Add User</a></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="{{ route('profile.show', 1) }}"><i class="fa fa-fw fa-file"></i> Profile</a></li>
+                    <li class="active"><a href="{{ route('users.show', 1) }}"><i class="fa fa-address-card-o"></i> Profile</a></li> 
+                    {{-- TODO PARAMETER PROFILE ROUTE --}}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -89,9 +96,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            <div>Username</div>
+                            <div>{{auth()->user()->username}}</div>
                         </h1>
-                   
                     </div>
                 </div>
                 @yield('content')
@@ -103,10 +109,17 @@
     </div>
     <!-- /#wrapper -->
 
-      <!-- jQuery -->
-      <script src="{{asset('js/jquery.js')}}"></script>
+    <!-- Custom JS-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="{{asset('js/script.js')}}"></script>
 
-      <!-- Bootstrap Core JavaScript -->
-      <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <!-- jQuery -->
+    <script src="{{asset('js/jquery.js')}}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    @stack('scripts')
+    @stack('google_chars')
+    
 </body>
 </html>

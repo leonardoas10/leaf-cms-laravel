@@ -11,33 +11,28 @@
 |
 */
 
-
 // CLIENT
 Route::get('/', 'Client\HomeController@index');
 Route::post('/', 'Client\HomeController@index');
 Route::get('/category/{category}', 'Client\HomeController@index')->name('category.index');
 Route::get('/post/{post}', 'Client\HomeController@show')->name('post.show');
-Route::get('/forgot', 'Client\ForgotController@index')->name('forgot.index');
-Route::post('/forgot', 'Client\ForgotController@store')->name('forgot.store');
-Route::get('/registration', 'Client\RegistrationController@index')->name('registration.index');
-Route::post('/registration', 'Client\RegistrationController@store')->name('registration.store');
-
-Route::get('/reset', 'Client\ResetController@index');
-
 Route::resource('contact', 'Client\ContactController');
-Route::resource('login', 'Client\LoginController');
-
 
 // ADMIN
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/', 'Admin\AdminController@index')->name('admin.index');
     Route::get('/dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
-    Route::resource('posts', 'Admin\PostController');
-    Route::resource('categories', 'Admin\CategoryController');
-    Route::resource('comments', 'Admin\CommentController')->except(['store']);
+    Route::post('/bulk/{operation}', 'Admin\BulkOperator@operate');
     Route::post('/post/{post}/comments', 'Admin\CommentController@store')->name('post.comment.store');
-    Route::resource('users', 'Admin\UserController');
-    Route::resource('profile', 'Admin\UserController');
-
-    Route::patch('/status/{status}', 'Admin\ChangeStatusController@updateRole')->name('change.updateRole');
+    Route::patch('/status/{user}', 'Admin\ChangeStatusController@updateRole')->name('change.updateRole');
+    Route::resource('comments', 'Admin\CommentController')->except(['store']);
+    Route::resources([
+        'posts' =>  'Admin\PostController',
+        'categories' => 'Admin\CategoryController',
+        'users' => 'Admin\UserController',
+    ]);
 });
+
+Auth::routes();
+
+Route::get('/status', 'AlreadyLogin@index')->name('home');

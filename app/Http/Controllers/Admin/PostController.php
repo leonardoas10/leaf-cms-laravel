@@ -3,21 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
 use App\Post;
 use App\Category;
 use App\User;
-use Illuminate\Support\Facades\Storage;
 
-//  use App\Http\Requests\PostStoreRequest; TODO validation
-
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
-    
     public function index()
     {
-        $posts = Post::all();   
+        $posts = Post::all(); 
+        $posts = $posts->map(function ($post) {
+            $post->title = ucwords($post->title); //TODO seguir ...
+            return $post;
+        });
+
         return view('admin.post', compact('posts'));
     }
    
@@ -28,25 +30,18 @@ class PostController extends Controller
         return view('admin.add_post', compact('categories', 'users'));
     }
  
-    public function store()
+    public function store(PostRequest $request)
     {
-        $validated = request()->validate([
-            'title' => 'required',
-            'category_id' => 'required',
-            'user' => 'required',
-            'content' => 'required',
-            'tags' => 'required',
-            'status' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-            ]);
-        if(request()->hasFile('image')) {
-            $fileName = request()->file('image')->getClientOriginalName();
-            request()->file('image')->storeAs('/', $fileName);
-            $validated['image'] = $fileName;
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;  
+
+        if($request->hasFile('image')) {
+            $fileName = $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('/', $fileName);
+            $data['image'] = $fileName;
         }
 
-        Post::create( $validated );
-       
+        Post::create( $data );
         return redirect('admin/posts'); 
     }
 
@@ -62,26 +57,18 @@ class PostController extends Controller
         return view('admin.edit_post', compact('post','users','categories'));
     }
 
-    public function update(Post $post)
+    public function update(Post $post, PostRequest $request)
     {
-        $validated = request()->validate([
-            'title' => 'required',
-            'category_id' => 'required',
-            'user' => 'required',
-            'content' => 'required',
-            'tags' => 'required',
-            'status' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-            ]);
-        if(request()->hasFile('image')) {
-            // Storage::delete($post->photo);
-            $fileName = request()->file('image')->getClientOriginalName();
-            request()->file('image')->storeAs('/', $fileName);
-            $validated['image'] = $fileName;
+        $data = $request->all();
+
+        if($request->hasFile('image')) {
+            // Storage::delete($post->photo); TODO
+            $fileName = $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('/', $fileName);
+            $data['image'] = $fileName;
         }
 
-        $post->update($validated);
-
+        $post->update($data);
         return redirect('admin/posts'); 
     }
 
@@ -91,3 +78,21 @@ class PostController extends Controller
         return redirect('admin/posts');
     }
 }
+
+// class myClass {
+//     public $myservice;
+//     public function __construct(Post $post)
+//     {
+//         $this->myservice = $post;
+//         $this->myservice->all();   
+//     }
+//     public function setmyservice(Post $post) {
+//         $this->myservice = $post;
+
+//     }
+// }
+
+// $nuevaclase = new myClass(new Post());
+// $nuevaclase->myservice->all(); 
+
+// $nuevaclase->setmyservice(new Post);

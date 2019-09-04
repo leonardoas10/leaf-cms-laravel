@@ -3,18 +3,18 @@
 @section('content')
 <div class="col-md-7">
     <h2>{{$post->title}}</a></h2>
-    <p class="lead">Posted by: </p>
+    <p class="lead">Posted by: {{$post->user}}</p>
     <p><span class="glyphicon glyphicon-time time-icon"></span> Posted on {{$post->created_at}}</p>
-    <hr>
+    <hr class="hr-post">
     <a href="post.php?p_id=">
         <img class="img-responsive" src="{{asset('images/' . $post->image)}}" alt="/post_image">
     </a>
-    <hr>
+    <br>
     <p>{{$post->content}}</p>
     <!-- Comments Form -->
     <div class="well">
         <h4>Leave a Comment:</h4>
-    <form role="form" action="{{ route('post.comment.store', $post) }}" method="post">
+        <form role="form" action="{{ route('post.comment.store', $post) }}" method="post">
             @csrf
             <div class="form-group">
                 <label for="Author">Author</label>
@@ -31,9 +31,10 @@
             <button type="submit" class="btn btn-primary comment-button" name="create_comment">Submit</button>
         </form>
     </div>
-
+    
     <!-- Comment -->
     @foreach ($post->comments as $comment)
+        @if ($comment->status === "Approved")
         <div class="media">
             <a class="pull-left" href="#">
                 <img class="media-object" src="http://placehold.it/64x64" alt="">
@@ -43,12 +44,12 @@
                 <small>{{$comment->created_at}}</small>
                 </h4>
             <span>{{$comment->content}}</span>
-    
+
                 <!-- End Nested Comment -->
             </div>
         </div>
-    @endforeach
-    
+        @endif
+    @endforeach    
 </div>
 @include('client/sidebar')
 @endsection

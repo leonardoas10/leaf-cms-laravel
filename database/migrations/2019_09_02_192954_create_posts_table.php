@@ -16,6 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedInteger('user_id');
             $table->string('title');
             $table->string('user');
@@ -23,10 +24,9 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->string('tags');
             $table->string('status');
-            $table->integer('views_count');
-            $table->integer('comments_count');
-            $table->integer('likes');
-            $table->timestamps();
+            $table->integer('views_count')->default(0);
+            $table->integer('likes')->default(0);
+            $table->timestamps(); 
         });
     }
 

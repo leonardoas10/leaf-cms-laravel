@@ -1,36 +1,32 @@
 @extends('admin.adminlayout')
 @section('content')
 
-<form action="" method="post" enctype="multipart/form-data">
+<form action="{{ route('users.edit', $user->id ) }}">
+    @csrf
     <div class="form-group">
-        <label for="user_firstname">Firstname</label>
-        <input type="text" class="form-control input-background" name="user_firstname" value="">
+        <label for="firstname">Firstname</label>
+        <input id="firstname" type="text" class="form-control input-background" name="firstname" value="{{$user->firstname}}">
     </div>
     <div class="form-group">
-        <label for="user_lastname">Lastname</label>
-        <input type="text" class="form-control input-background" name="user_lastname" value="">
+        <label for="lastname">Lastname</label>
+        <input id="lastname" type="text" class="form-control input-background" name="lastname" value="{{$user->lastname}}">
     </div>
     <div class="form-group">
-        <select name="user_role" id="" class="input-background">
-            <option value="">roll actual</option>
-            <option value='Subscriber'>Subscriber</option>
-            <option value='Admin'>Admin</option>
-        </select>
+            <label for="role">Role</label>
+            <input id="role" type="text" class="form-control input-background" name="role" value="{{$user->role}}">
     </div>
     <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control input-background" name="username" value="">
+        <input id="username" type="text" class="form-control input-background" name="username" value="{{$user->username}}">
     </div>
     <div class="form-group">
-        <label for="user_email">Email</label>
-        <input type="email" class="form-control input-background" name="user_email" value="">
-    </div>
-    <div class="form-group">
-        <label for="user_password">Password</label>
-        <input autocomplete="off" type="password" class="form-control input-background" name="user_password">
-    </div>
-    <div class="form-group">
-        <input class="btn btn-success submit-buttons" type="submit" name="edit_user" value="Edit User">
+        <label for="email">Email</label>
+        <input id="email" type="email" class="form-control input-background" name="email" value="{{$user->email}}">
+    </div>      
+    <div class="form-group ">
+        <div class="col-md-1 col-centered ">
+            <input class="btn btn-success submit-buttons" type="submit" name="edit_user" value="Edit Your User Here">
+        </div>
     </div>
 </form>
 

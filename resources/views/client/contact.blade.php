@@ -10,7 +10,7 @@
                 <div class="form-wrap">
                 <h1 class="text-center">Contact Us</h1>
                     <form role="form" action="./phpMailer/MailerConfig.php" method="post" id="login-form" autocomplete="off">
-                         <div class="form-group">
+                        <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
                             <input type="email" name="email" id="email" class="form-control input-background" placeholder="Enter your Email">
                         </div> 

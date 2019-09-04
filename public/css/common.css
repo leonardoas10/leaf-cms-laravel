@@ -1,0 +1,112 @@
+:root {
+    --color: RGB(54, 181, 75);
+    --color-background: RGB(216, 253, 216);
+}
+
+/*INPUTS BACKGROUND*/
+.input-background:focus {
+    box-shadow: none !important;
+    outline: none !important;
+    border-color: var(--color) !important; 
+}
+.input-background:active {
+    border-color: var(--color) !important; 
+}
+.input-background:hover {
+    box-shadow: none;
+    background-color: var(--color-background) !important; 
+    border-color: var(--color) !important; 
+     outline: none !important;
+}
+
+/*LOGIN BUTTON*/
+.login-button {
+    background-color: var(--color) !important;
+    color: black !important;
+    border-color: var(--color) !important; 
+    transition: 0.4s;
+    opacity: 0.6 !important;
+}
+
+.login-button:hover {
+    background-color: var(--color) !important;
+    border-color: var(--color) !important; 
+    opacity: 1 !important;
+}
+
+/* FORGOT LINK */
+.forgot-link{
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+}
+
+.forgot-link a{
+    text-decoration: none !important;
+    color: RGB(158, 225, 161) !important;
+}
+
+.forgot-link a:hover{
+    text-decoration: none !important;
+    color: var(--color) !important;
+}
+
+/* CENTER DIV'S */
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+/* ICON'S */
+.fa-server, .fa-commenting-o, .fa-gears, .fa-unlock,  .fa-check-circle {
+    color: var(--color) !important;
+}
+.fa-times-circle {
+    color: #d9534f;
+}
+.justify-i {
+    margin: auto;
+}
+
+/* MARGIN FOR I */
+.margin-out {
+    margin: 0 !important;
+}
+
+/*LINKS COLOR*/
+.links-color a{
+    text-decoration: none !important;
+    color: RGB(158, 225, 161) !important;
+}
+.links-color a:hover{
+    text-decoration: none !important;
+    color: var(--color) !important;
+}
+
+/*SUBMIT BUTTONS*/
+.submit-buttons {
+    background-color: var(--color) !important;
+    opacity: 0.6 !important;
+    transition: 0.5s;
+    border-color: none !important;
+    
+}
+
+.submit-buttons:hover {
+    opacity: 1 !important;
+    text-decoration: none !important;
+}
+
+.submit-buttons:focus {
+    box-shadow: none !important;
+    border-color: var(--color) !important; 
+}
+.submit-buttons:active {
+    border-color: var(--color) !important; 
+}
+
+.red-error {
+    background-color: RGB(255, 159, 155);
+    padding: 1px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}

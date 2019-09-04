@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Categories extends Migration
+class AlterCommentsAddingForeignKey extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class Categories extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function(Blueprint $table) {
-            $table ->increments('id');
-            $table->string('title');
-            $table->timestamps();
+        Schema::table('comments', function (Blueprint $table) {
+            $table->unsignedBigInteger('post_id')->change();
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 
@@ -27,6 +26,6 @@ class Categories extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('comments');
     }
 }

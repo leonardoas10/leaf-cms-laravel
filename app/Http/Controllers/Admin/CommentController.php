@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
 use App\Comment;
 use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
@@ -22,15 +22,9 @@ class CommentController extends Controller
         //
     }
 
-    public function store(Post $post)
+    public function store(Post $post, CommentRequest $request)
     {
-        $attributes = request()->validate([
-            'author' => 'required',
-            'email' => 'required',
-            'content' => 'required'
-        ]);
-        $post->addComment($attributes);
-
+        $post->addComment($request->all());
         return back();
     }
 

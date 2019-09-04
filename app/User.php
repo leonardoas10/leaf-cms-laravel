@@ -2,10 +2,14 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Cache;
+use Illuminate\Foundation\Auth\User as Authenticable;
 
-class User extends Model
+class User extends Authenticable
 {
+    const admin = 'Admin';
+    const subscriber = 'Subscriber';
+
     protected $fillable = [
         'username', 'password', 'firstname', 'lastname', 'email', 'image', 'role'
     ];
@@ -13,15 +17,7 @@ class User extends Model
     public function posts() {
         return $this->hasMany(Post::class);
     }
-    public function admin()
-    {
-        return $this->update(['role' => 'Admin']);
+    public function userIsOnline() {
+        return Cache::has('user-is-online'. $this->id);
     }
-    public function subscriber() 
-    {
-        return $this->update(['role' => 'Subscriber']);
-    }
-
-    const admin = 'Admin';
-    const subscriber = 'Subscriber';
 }
