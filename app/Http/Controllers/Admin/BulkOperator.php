@@ -68,33 +68,6 @@ class BulkOperator extends Controller
                     $model->where('id', '=', $id)->delete();
                 }
             break; 
-            case 'Clone':
-                foreach ($ids as $id) {
-                    if($model === $post) { 
-                        $getPosts = Post::where('id',  $id)->get();
-                        foreach ($getPosts as $getPost) {             
-                            Post::create([
-                                'title' => $getPost->title, 
-                                'user' =>$getPost->user, 
-                                'user_id' =>$getPost->user_id, 
-                                'category_id' => $getPost->category_id,
-                                'content' =>$getPost->content, 
-                                'tags' =>$getPost->tags, 
-                                'status' =>$getPost->status, 
-                                'image' =>$getPost->image, 
-                            ]);
-                        }       
-                    }
-                    if($model === $category) { 
-                        $getCategories = Category::where('id',  $id)->get();
-                        foreach ($getCategories as $getCategory) {             
-                            Category::create([
-                                'title' => $getCategory->title, 
-                            ]);
-                        }       
-                    }
-                }
-            break;
         }
     }
 }

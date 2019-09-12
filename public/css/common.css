@@ -22,7 +22,7 @@
 /*LOGIN BUTTON*/
 .login-button {
     background-color: var(--color) !important;
-    color: black !important;
+    color: white !important;
     border-color: var(--color) !important; 
     transition: 0.4s;
     opacity: 0.6 !important;
@@ -52,12 +52,22 @@
 
 /* CENTER DIV'S */
 .col-centered {
-    float: none;
+    float: none !important;
+    margin: 0 auto !important;
+}
+
+/* RIGHT DIV'S */
+.col-right {
+    float: right;
     margin: 0 auto;
 }
 
+/* DIV WITHOUT PADDING */
+.col-without-padding {
+    padding: 0 !important;
+}
 /* ICON'S */
-.fa-server, .fa-commenting-o, .fa-gears, .fa-unlock,  .fa-check-circle {
+.fa-server, .fa-commenting-o, .fa-gears, .fa-unlock,  .fa-check-circle, .fa-lock, .fa-camera {
     color: var(--color) !important;
 }
 .fa-times-circle {
@@ -103,10 +113,85 @@
 .submit-buttons:active {
     border-color: var(--color) !important; 
 }
-
+/* FOR INPUTS ERRORS */
 .red-error {
     background-color: RGB(255, 159, 155);
     padding: 1px;
     border: 1px solid transparent;
     border-radius: 4px;
+}
+
+/* MARGINS */
+.margin-left-more {
+    margin-left: 1% !important;
+}
+
+.margin-left-more-lang-buttom {
+    margin-left: 14% !important;
+}
+
+
+.margin-right-more {
+    margin-right: 15px !important;
+}
+
+.margin-right-more-facebook-icon {
+    margin-right: 4% !important;
+}
+
+.margin-bottom-more {
+    margin-bottom: 1.5% !important;
+}
+
+.margin-bottom-more-complete-register {
+    margin-bottom: 3% !important;
+}
+
+.form-group-less-margin {
+    margin-bottom: 5px !important;
+}
+
+.panel-body-less-padding-bottom {
+    padding-bottom: 5px !important;
+}
+/* DISPLAY FLEX */
+.flex-wrap {
+    display: flex !important;
+    flex-flow: column !important;
+}
+
+.flex-row {
+    display: flex;
+    flex-flow: row;
+}
+
+/* TOGGLE BUTTON ENGLISH/ESPAÑOL */
+.toggle {
+    margin-top: 10% !important;
+    color: #9d9d9d !important;
+    background-color: transparent !important;
+}
+
+.toggle.btn.btn-light, .toggle.btn.btn-outline-light {
+    border-color: var(--color) !important;
+}
+
+.toggle-handle {
+    background-color: var(--color) !important;
+}
+
+.toggle:hover {
+    color: var(--color) !important;
+    text-decoration: none;
+}
+
+
+.btn-dark {
+    color: #9d9d9d !important;
+    border-color: var(--color)  !important;
+}
+
+
+.btn-dark:hover {
+    color: var(--color) !important;
 }

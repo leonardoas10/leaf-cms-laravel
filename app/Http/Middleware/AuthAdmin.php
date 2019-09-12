@@ -3,11 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
-use Cache;
-use Carbon\Carbon;
 
-class LastUserActivity
+class AuthAdmin
 {
     /**
      * Handle an incoming request.
@@ -18,10 +15,11 @@ class LastUserActivity
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()) {
-            $expiresAt = Carbon::now()->addMinute(1);
-            Cache::put('user-is-online' . Auth::user()->id,true,$expiresAt);
+        
+        if(auth()->user()->role !== "Admin") {
+            return redirect('/admin');
         }
+
         return $next($request);
     }
 }

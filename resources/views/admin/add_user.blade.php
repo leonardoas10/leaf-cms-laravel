@@ -4,7 +4,7 @@
     @csrf
     <div class="form-group">
         <label for="firstname">Firstname</label>
-        <input type="text" class="form-control input-background" name="firstname"> 
+        <input type="text" class="form-control input-background" name="firstname" value="{{ old('firstname') }}"> 
     </div>
     <div class="form-group">
         @error('firstname')
@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
         <label for="lastname">Lastname</label>
-        <input type="text" class="form-control input-background" name="lastname">
+        <input type="text" class="form-control input-background" name="lastname" value="{{ old('lastname') }}">
     </div>
     <div class="form-group">
         @error('lastname')
@@ -32,8 +32,12 @@
         </select>
     </div>
     <div class="form-group">
+        <label for="image">Profile Image</label>
+        <input type="file" class="form-control input-background" name="image">
+    </div>
+    <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control input-background" name="username">
+        <input type="text" class="form-control input-background" name="username" value="{{ old('username') }}">
     </div>
     <div class="form-group">
         @error('username')
@@ -44,7 +48,7 @@
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control input-background" name="email">
+        <input type="email" class="form-control input-background" name="email" value="{{ old('email') }}">
     </div>
     <div class="form-group">
         @error('email')

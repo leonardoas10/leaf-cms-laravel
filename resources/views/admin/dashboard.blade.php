@@ -11,15 +11,14 @@
                         <i class="fa fa-file-text fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-
                         <div class='huge'>{{$posts->count()}}</div>
-                        <div>Posts</div>
+                        <div>{{__('googlechars.posts')}}</div>
                     </div>
                 </div>
             </div>
             <a href="{{route('posts.index')}}">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">{{__('googlechars.view_details')}}</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -35,14 +34,13 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class='huge'>{{$comments->count()}}</div>
-
-                        <div>Comments</div>
+                        <div>{{__('googlechars.comments')}}</div>
                     </div>
                 </div>
             </div>
             <a href="{{route('comments.index')}}">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">{{__('googlechars.view_details')}}</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -58,13 +56,13 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class='huge'>{{$users->count()}}</div>
-                        <div> Users</div>
+                        <div>{{__('googlechars.users')}}</div>
                     </div>
                 </div>
             </div>
             <a href="{{route('users.index')}}">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">{{__('googlechars.view_details')}}</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -80,13 +78,13 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class='huge'>{{$categories->count()}}</div>
-                        <div>Categories</div>
+                        <div>{{__('googlechars.categories')}}</div>
                     </div>
                 </div>
             </div>
             <a href="{{route('categories.index')}}">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">{{__('googlechars.view_details')}}</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -103,15 +101,15 @@
         function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ["Element", "Count", { role: "style" } ],
-            ["All Posts", {{$posts->count()}}, "#337ab7"],
-            ["Active Posts", {{$posts->where('status', '=', 'Published')->count()}}, "#337ab7"],
-            ["Draft Posts", {{$posts->where('status', '=', 'Draft')->count()}}, "#337ab7"],
-            ["Comments", {{$comments->count()}}, "#5cb85c"],
-            ["Pending Comments", {{$comments->where('status', '=', 'Unapproved')->count()}}, "#5cb85c"],
-            ["Users", {{$users->count()}}, "#f0ad4e"],
-            ["Admins", {{$users->where('role', '=', 'Admin')->count()}}, "#f0ad4e"],
-            ["Subscribers", {{$users->where('role', '=', 'Subscriber')->count()}}, "#f0ad4e"],
-            ["Categories", {{$categories->count()}}, "#d9534f"],
+            ["@lang('googlechars.all_posts')", {{$posts->count()}}, "#337ab7"],
+            ["@lang('googlechars.active_posts')", {{$posts->where('status', '=', 'Published')->count()}}, "#337ab7"],
+            ["@lang('googlechars.draft_posts')", {{$posts->where('status', '=', 'Draft')->count()}}, "#337ab7"],
+            ["@lang('googlechars.comments')", {{$comments->count()}}, "#5cb85c"],
+            ["@lang('googlechars.pending_comments')", {{$comments->where('status', '=', 'Unapproved')->count()}}, "#5cb85c"],
+            ["@lang('googlechars.users')", {{$users->count()}}, "#f0ad4e"],
+            ["@lang('googlechars.admins')", {{$users->where('role', '=', 'Admin')->count()}}, "#f0ad4e"],
+            ["@lang('googlechars.subscribers')", {{$users->where('role', '=', 'Subscriber')->count()}}, "#f0ad4e"],
+            ["@lang('googlechars.categories')", {{$categories->count()}}, "#d9534f"],
         ]);
 
         var view = new google.visualization.DataView(data);

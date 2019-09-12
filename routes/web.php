@@ -19,20 +19,34 @@ Route::get('/post/{post}', 'Client\HomeController@show')->name('post.show');
 Route::resource('contact', 'Client\ContactController');
 
 // ADMIN
-Route::prefix('admin')->middleware('auth')->group(function(){
+Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('/', 'Admin\AdminController@index')->name('admin.index');
-    Route::get('/dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
+    Route::get('/dashboard', 'Admin\DashboardController@index')->middleware('auth.admin')->name('admin.dashboard');
     Route::post('/bulk/{operation}', 'Admin\BulkOperator@operate');
     Route::post('/post/{post}/comments', 'Admin\CommentController@store')->name('post.comment.store');
     Route::patch('/status/{user}', 'Admin\ChangeStatusController@updateRole')->name('change.updateRole');
     Route::resource('comments', 'Admin\CommentController')->except(['store']);
+    Route::resource('users', 'Admin\UserController')->except(['show', 'edit', 'update'])->middleware('auth.admin');
     Route::resources([
         'posts' =>  'Admin\PostController',
         'categories' => 'Admin\CategoryController',
-        'users' => 'Admin\UserController',
     ]);
+    Route::get('/profile/{user}', 'Admin\UserController@show')->name('user.profile');
+    Route::get('/lastactivity', 'Admin\UserController@lastactivity');
+    Route::get('/users/{user}/edit', 'Admin\UserController@edit')->name('users.edit');
+    Route::patch('/users/{user}', 'Admin\UserController@update')->name('users.update');
 });
 
 Auth::routes();
 
 Route::get('/status', 'AlreadyLogin@index')->name('home');
+
+// LANG
+Route::post('/lang/{lang}', 'LangController@lang');
+
+// FACEBOOK
+Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/callback/{provider}', 'SocialController@callback');
+Route::get('/complete', 'SocialController@index');
+Route::post('/complete', 'SocialController@store')->name('complete.store');
+

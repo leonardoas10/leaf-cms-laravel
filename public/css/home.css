@@ -99,6 +99,7 @@
 
 /*REGISTER BUTTOM*/
 .register-button {
+    color: white;
     background-color: var(--color) !important;
     margin: 10px 20px 0 20px !important;
     width: 100px !important;
@@ -107,12 +108,13 @@
     transition: 0.5s;
 }
 .register-button:hover {
+    color: white;
     opacity: 1 !important;
     transform: scale(1.2);
 }
 /*COMMENT BUTTON*/ 
 .comment-button {
-    color: black;
+    color: white;
     background-color: var(--color) !important;
     opacity: 0.6 !important;
     transition: 0.5s;    
@@ -120,7 +122,6 @@
 }
 
 .comment-button:hover {
-    color: black;
     opacity: 1 !important;
     transform: scale(1.2);
     border-color: var(--color) !important; 
@@ -179,7 +180,7 @@
 
 .forgot-card, .reset-card, .login-card {
     border: 0.5px solid var(--color) !important; 
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .forgot-button, .reset-button, .login-button:hover {
@@ -205,6 +206,20 @@
 .fa-user {
     color: var(--color) !important;
 }
+/* PROFILE IMAGE FOR COMMENTS */
+.img-profile-comment {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* PROFILE IMAGE FOR FACEBOOK REGISTER */
+.img-profile-facebook-register {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
 
 
 

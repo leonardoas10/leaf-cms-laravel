@@ -12,42 +12,62 @@
     <br>
     <p>{{$post->content}}</p>
     <!-- Comments Form -->
-    <div class="well">
-        <h4>Leave a Comment:</h4>
-        <form role="form" action="{{ route('post.comment.store', $post) }}" method="post">
-            @csrf
-            <div class="form-group">
-                <label for="Author">Author</label>
-                <input class="form-control input-background" type="text" name="author">
+
+    @guest
+        <div class="panel panel-default">
+            <div class="panel-body login-card">
+                <div class="text-center">
+                    <h1><i class="fa fa-commenting-o fa-3x"></i></h1>
+                    <h1 class="text-center"><i class="fa fa-quote-left"></i> If you want to comment, register with us! <i class="fa fa-quote-right "></i></h1>
+                    <div class="form-group col-md-4 col-centered">
+                        <div class="flex-row ">
+                            <div class=" col-centered">
+                                <a href="{{ route('register') }}" class="btn btn-success submit-buttons ">{{ __('Join Us') }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="Email">Email</label>
-                <input class="form-control input-background" type="email" name="email">
-            </div>
-            <div class="form-group">
-                <label for="Comment">Your Comment</label>
-                <textarea type="text" class="form-control input-background" id="body" cols="30" rows="10" name="content"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary comment-button" name="create_comment">Submit</button>
-        </form>
-    </div>
-    
+        </div>
+    @endguest
+    @auth
+        <div class="well">
+            <h4>Leave a comment {{Auth::user()->username}}</h4>
+            <form role="form" action="{{ route('post.comment.store', $post) }}" method="post">
+                @csrf
+                <div class="form-group">
+                    <label for="content">Your Comment</label>
+                    <textarea type="text" class="form-control input-background" id="content" cols="30" rows="10" name="content"></textarea>
+                </div>
+                <div class="form-group">
+                    @error('content')
+                        <span class="invalid-feedback red-error" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <button type="submit" class="btn btn-primary comment-button" name="create_comment">Submit</button>
+            </form>
+        </div>   
+    @endauth
+
     <!-- Comment -->
     @foreach ($post->comments as $comment)
         @if ($comment->status === "Approved")
-        <div class="media">
-            <a class="pull-left" href="#">
-                <img class="media-object" src="http://placehold.it/64x64" alt="">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">{{$comment->author}}
-                <small>{{$comment->created_at}}</small>
-                </h4>
-            <span>{{$comment->content}}</span>
+            <div class="flex-row margin-bottom-more">
 
-                <!-- End Nested Comment -->
+                @if ($comment->user->provider_id > 1)
+                    <img class="img-profile-comment" src="{{$comment->user->image}}" alt="">
+                @else
+                    <img class="img-profile-comment" src="{{asset('images/' . $comment->user->image)}}" alt=""> 
+                @endif
+                <div class="margin-left-more">
+                    <h4>{{$comment->user->username}}
+                    <small>{{$comment->created_at}}</small>
+                    </h4>
+                    <span>{{$comment->content}}</span>
+                </div>
             </div>
-        </div>
         @endif
     @endforeach    
 </div>

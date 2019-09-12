@@ -45,6 +45,10 @@ th {
     width: 120px;
     height: auto
 }
+.img-fluid-profile {
+    width: 130px;
+    height: 180px;
+}
 /*LEAF ICON*/
 .leaf-icon {
     color: var(--color) !important;
@@ -57,18 +61,6 @@ th {
 .tr-background>tbody>tr:hover {
     background-color: var(--color-background) !important; 
 }
-
-/*
-CHECKBOX
-.checkbox-color input[type=checkbox] {
-    color: red !important;
-    background-color: red !important;
-}
-.checkbox-color[type=checkbox] {
-    color: red !important;
-    background-color: red !important;
-}
-*/
 
 /*NAVBAR*/
 .navbar-title, .navbar-subtitles:hover, .navbar-subtitles>li>a:hover, .navbar-subtitles b:hover {
@@ -130,6 +122,26 @@ CHECKBOX
     border-color: var(--color) !important; 
 }
 
+/* USER ONLINE NAV TAG */
+.usersonline {
+    color: var(--color) !important;
+    font-size: 15px; 
+}
+
+/* PROFILE CARD */
+.profile-card {
+    border: 0.5px solid var(--color) !important; 
+    border-radius: 2px;
+    padding: 7px !important;
+    width: 145px !important;
+    height: 195px !important;
+}
+
+/* MARGIN TOP FOR QUOTE */
+.margin-top-quote {
+    margin-top: 18% !important;
+}
+
 /*LOADER-GIF TODO*/
 #load-screen {
     background: url(../../images/header-back.png);
@@ -148,6 +160,53 @@ CHECKBOX
     background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+/* RADIUS CHECK BUTTON */
+.label-checkbox {
+    cursor: pointer; 
+    margin: auto;
+    margin-left: 25% !important;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    opacity: 0; 
+}
+
+.cbx {
+    width: 110%;
+    height: 120%;
+    border-radius: 50%;
+    -webkit-tap-highlight-color: transparent; 
+    transition: all .15s ease;
+    float: left;
+    margin-left: 6px; 
+}
+
+.cbx:hover, .cbx:after {
+    transform: scale(2.0);
+}
+
+.icon-checkbox {
+    margin-top: 10% !important;
+    margin-left: 15% !important;
+    color: black;
+}
+
+.icon-checkbox:hover { 
+    color: var(--color);
+}
+
+input[type="checkbox"]:checked + .cbx {
+    background-image: linear-gradient(TO RIGHT, var(--color), RGB(244, 255, 248))!important;
+}
+
+/* -----------------MEDIA QUERIES----------------------- */
+@media screen and (max-width: 450px) {
+    .hide-on-mobile {
+         display: none; 
+     }
 }
 
 

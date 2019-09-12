@@ -11,6 +11,10 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();   
+        $categories = $categories->map(function ($category) {
+            $category->title = ucwords($category->title);
+            return $category;
+        });
         return view('admin.categories', compact('categories'));
     }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Category;
 use App\User;
+use App;
 
 use App\Http\Requests\PostRequest;
 
@@ -15,25 +16,37 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all(); 
+
         $posts = $posts->map(function ($post) {
-            $post->title = ucwords($post->title); //TODO seguir ...
+            $post->title = ucwords($post->title);
+            $post->user = ucwords($post->user);
+            $post->category_id = ucwords($post->category_id);
+            $post->tags = ucwords($post->tags);
+            if (App::isLocale('es') && $post->status === "Published") {
+                $post->status = "Publicado";
+            }
+            if (App::isLocale('es') && $post->status === "Draft") {
+                $post->status = "Borrador";
+            }
             return $post;
         });
 
-        return view('admin.post', compact('posts'));
+        $subscribers_posts = $posts->where('user_id', auth()->user()->id);
+
+        return view('admin.post', compact('posts', 'subscribers_posts'));
     }
    
     public function create()
     {
         $categories = Category::all();
-        $users = User::all();   
-        return view('admin.add_post', compact('categories', 'users'));
+        return view('admin.add_post', compact('categories'));
     }
  
     public function store(PostRequest $request)
     {
         $data = $request->all();
-        $data['user_id'] = auth()->user()->id;  
+        $data['user_id'] = auth()->user()->id;
+        $data['user'] = auth()->user()->username;  
 
         if($request->hasFile('image')) {
             $fileName = $request->file('image')->getClientOriginalName();
@@ -52,9 +65,11 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $users = User::all();  
+  
+
+      
         $categories = Category::all();
-        return view('admin.edit_post', compact('post','users','categories'));
+        return view('admin.edit_post', compact('post','categories'));
     }
 
     public function update(Post $post, PostRequest $request)
@@ -78,21 +93,3 @@ class PostController extends Controller
         return redirect('admin/posts');
     }
 }
-
-// class myClass {
-//     public $myservice;
-//     public function __construct(Post $post)
-//     {
-//         $this->myservice = $post;
-//         $this->myservice->all();   
-//     }
-//     public function setmyservice(Post $post) {
-//         $this->myservice = $post;
-
-//     }
-// }
-
-// $nuevaclase = new myClass(new Post());
-// $nuevaclase->myservice->all(); 
-
-// $nuevaclase->setmyservice(new Post);

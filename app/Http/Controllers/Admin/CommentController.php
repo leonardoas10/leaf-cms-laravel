@@ -5,16 +5,24 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Comment;
 use App\Post;
-use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
-
     public function index()
     {
         $comments = Comment::all();
-        return view('admin.comments', compact('comments'));
+
+        $comments = $comments->map(function ($comment) {
+            $comment->content = ucwords($comment->content);
+            return $comment;
+        });
+
+        $posts = Post::all();
+        $posts = $posts->where('user_id', auth()->user()->id);
+        $subscribers_comments = $posts->pluck('comments')->collapse();
+
+        return view('admin.comments', compact('comments', 'subscribers_comments'));
     }
 
     public function create()

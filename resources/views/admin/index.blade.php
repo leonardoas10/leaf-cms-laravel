@@ -3,7 +3,7 @@
 
 <!-- /.row -->
 <div class="row">
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-6 col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="row">
@@ -12,20 +12,20 @@
                     </div>
                     <div class="col-xs-9 text-right"> 
                     <div class='huge'>{{$posts->count()}}</div>
-                        <div>Posts</div>
+                    <div>{{__('googlechars.posts')}}</div>
                     </div>
                 </div>
             </div>
             <a href="{{route('posts.index')}}">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">{{__('googlechars.view_details')}}</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
             </a>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-6 col-md-6">
         <div class="panel panel-green">
             <div class="panel-heading">
                 <div class="row">
@@ -34,35 +34,13 @@
                     </div>
                     <div class="col-xs-9 text-right">
                             <div class='huge'>{{$comments->count()}}</div>
-                        <div>Comments</div>
+                        <div>{{__('googlechars.comments')}}</div>
                     </div>
                 </div>
             </div>
             <a href="{{route('comments.index')}}">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-        <div class="panel panel-red">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-list fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                            <div class='huge'>{{$categories->count()}}</div>
-                        <div>Categories</div>
-                    </div>
-                </div>
-            </div>
-            <a href="{{route('categories.index')}}">
-                <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">{{__('googlechars.view_details')}}</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -79,12 +57,11 @@
         function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ["Element", "Count", { role: "style" } ],
-            ["All Posts", {{$posts->count()}}, "#337ab7"],
-            ["Active Posts", {{$posts->where('status', '=', 'Published')->count()}}, "#337ab7"],
-            ["Draft Posts", {{$posts->where('status', '=', 'Draft')->count()}}, "#337ab7"],
-            ["Comments", {{$comments->count()}}, "#5cb85c"],
-            ["Pending Comments", {{$comments->where('status', '=', 'Unapproved')->count()}}, "#5cb85c"],
-            ["Categories", {{$categories->count()}}, "#d9534f"],
+            ["@lang('googlechars.all_posts')", {{$posts->count()}}, "#337ab7"],
+            ["@lang('googlechars.active_posts')", {{$posts->where('status', '=', 'Published')->count()}}, "#337ab7"],
+            ["@lang('googlechars.draft_posts')", {{$posts->where('status', '=', 'Draft')->count()}}, "#337ab7"],
+            ["@lang('googlechars.comments')", {{$comments->count()}}, "#5cb85c"],
+            ["@lang('googlechars.pending_comments')", {{$comments->where('status', '=', 'Unapproved')->count()}}, "#5cb85c"],
         ]);
 
         var view = new google.visualization.DataView(data);
