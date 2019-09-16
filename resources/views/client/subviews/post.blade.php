@@ -3,14 +3,14 @@
 @section('content')
 <div class="col-md-7">
     <h2>{{$post->title}}</a></h2>
-    <p class="lead">Posted by: {{$post->user}}</p>
-    <p><span class="glyphicon glyphicon-time time-icon"></span> Posted on {{$post->created_at}}</p>
+    <p class="lead">{{__('index.posted_by')}} {{$post->user}}</p>
+    <p><span class="glyphicon glyphicon-time time-icon"></span> {{__('index.posted_on')}} {{$post->created_at}}</p>
     <hr class="hr-post">
     <a href="post.php?p_id=">
         <img class="img-responsive" src="{{asset('images/' . $post->image)}}" alt="/post_image">
     </a>
     <br>
-    <p>{{$post->content}}</p>
+    <p>{{strip_tags(html_entity_decode($post->content))}}</p>
     <!-- Comments Form -->
 
     @guest
@@ -18,11 +18,11 @@
             <div class="panel-body login-card">
                 <div class="text-center">
                     <h1><i class="fa fa-commenting-o fa-3x"></i></h1>
-                    <h1 class="text-center"><i class="fa fa-quote-left"></i> If you want to comment, register with us! <i class="fa fa-quote-right "></i></h1>
+                    <h1 class="text-center text-size"><i class="fa fa-quote-left"></i> {{__('index.if_you_want_to_comment')}} <i class="fa fa-quote-right "></i></h1>
                     <div class="form-group col-md-4 col-centered">
                         <div class="flex-row ">
                             <div class=" col-centered">
-                                <a href="{{ route('register') }}" class="btn btn-success submit-buttons ">{{ __('Join Us') }}</a>
+                                <a href="{{ route('register') }}" class="btn btn-success submit-buttons ">{{ __('index.join_us') }}</a>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="content">Your Comment</label>
-                    <textarea type="text" class="form-control input-background" id="content" cols="30" rows="10" name="content"></textarea>
+                    <textarea type="text" class="form-control input-background" id="body" cols="30" rows="10" name="content"></textarea>
                 </div>
                 <div class="form-group">
                     @error('content')

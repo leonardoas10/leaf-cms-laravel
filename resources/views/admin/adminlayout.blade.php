@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{asset('css/admin.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/common.css')}}" type="text/css">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
 </head>
 
 <body>
@@ -137,10 +137,10 @@
         var locale = '{{ config('app.locale') }}';
         checkOrUncheck(locale);
     </script>
-
     <!-- jQuery -->
     <script src="{{asset('js/jquery.js')}}"></script>
-
+    <!-- CKEditor-->
+    <script src="{{asset('js/ckeditor.js')}}"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     @stack('scripts')

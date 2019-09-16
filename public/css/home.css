@@ -222,8 +222,21 @@
 
 /* -----------------MEDIA QUERIES----------------------- */
 @media screen and (max-width: 450px) {
-     .navbar-subtitles:hover {
+    .navbar-subtitles:hover {
         transform: none !important;
+    }
+    .sidebar-margin-left {
+        margin-left: 0 !important;
+    }
+    .sidebar-margin-top {
+        margin-top: 5rem !important;
+    }
+    .logout-button-index {
+        margin-left: 5%;
+        margin-right: 30%;
+    }
+    .text-size {
+        font-size: 2rem !important;
     }
 }
 /* -----------------MEDIA QUERIES FOR IPHONE 6S----------------------- */
@@ -232,6 +245,9 @@
         position: fixed;
         left: 70%;
         bottom: 82%;
+    }
+    .margin-left-for-facebook-login-iphone-6s {
+        margin-left: 13.3rem;
     }
 }
 

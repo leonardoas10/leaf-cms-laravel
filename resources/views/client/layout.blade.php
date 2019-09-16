@@ -20,9 +20,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/home.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/common.css')}}" type="text/css">
-
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
-
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
 </head>
 
 <body>
@@ -105,9 +104,10 @@
     <script>lang("{{ csrf_token() }}");</script>
     <!-- jQuery -->
     <script src="{{asset('js/jquery.js')}}"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <!-- CKEditor-->
+    <script src="{{asset('js/ckeditor.js')}}"></script>
 
 
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>

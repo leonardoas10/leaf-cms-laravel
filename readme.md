@@ -1,10 +1,11 @@
 ## LEAF CMS LARAVEL 
 
-Leaf CMS Laravel is a web application for management posts from all users in which any users can comment posts, builted with Laravel V 5.8. It contains a system based on CMS (Content Management Social) with arquitecturer MVC (Modal View Controller) using Facebook Login as an asset to make look as a real web page. It performe as:
+Leaf CMS Laravel is a web application for management posts from all users in which any users can comment posts, builted with Laravel V 5.8. It contains a system based on CMS (Content Management System) with arquitecturer MVC (Modal View Controller) using Facebook Login as an asset to make look as a real web page. It performe as:
 
 - CMS, where an admin can manipulate and controlate the data without others users (subscribers) sees what happen under the hood.
 - Middlewares for prevent the intent to navigate to urls that only access admins, also for check the total users online.
 - An easy admin/users dashboard to see the all content of the account, buited with Google Chars.
+- Language Change System. EN and ES
 - System to retrieve the forgot password using Mailtrap.
 - Sort post through Categories.
 - Contact form using phpMailer.
