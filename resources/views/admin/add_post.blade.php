@@ -26,7 +26,7 @@
         @csrf
         <div class="form-group">
             <label for="title">{{__('post.title')}} </label>
-            <input value="" type="text" class="form-control input-background" name="title" value="{{ old('title') }}">
+            <input type="text" class="form-control input-background" name="title" value="{{ old('title') }}">
         </div>
         <div class="form-group">
             @error('title')
@@ -52,8 +52,8 @@
             @enderror
         </div>
         <div class="form-group">
-            {{__('post.status')}} 
-            <select name="status" id="" class="input-background">
+            <label for="status">{{__('post.status')}}</label>
+            <select name="status" id="status" class="input-background">
                 <option value="Draft">{{__('post.draft')}} </option>
                 <option value="Published">{{__('post.publish')}} </option>
             </select>
@@ -75,7 +75,7 @@
         </div>
         <div class="form-group">
             <label for="content">{{__('post.content')}}</label>
-            <textarea type="text" class="form-control" id="body" cols="30" rows="10" name="content" value="{{ old('content') }}"></textarea>
+            <textarea type="text" class="form-control" id="body" cols="30" rows="10" name="content">{{ old('content') }}</textarea>
         </div>
         <div class="form-group">
             @error('content')

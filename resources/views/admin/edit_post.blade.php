@@ -31,20 +31,20 @@
         @enderror
     </div>
     <div class="form-group">
-        {{__('post.status')}} 
-        <select name="status" id="" class="input-background">
+        <label for="status">{{__('post.status')}} </label>
+        <select name="status" id="status" class="input-background">
             
             @if (App::isLocale('es') && $post->status === "Draft")
                 <option value="{{$post->status}}">{{__('post.draft')}}</option>
                 <option value="Published">{{__('post.publish')}}</option>
-            @endif
+            @endif 
             @if (App::isLocale('es') && $post->status === "Published")  
                 <option value="{{$post->status}}">{{__('post.publish')}}</option>
                 <option value="Draft">{{__('post.draft')}}</option>
             @endif
             @if (App::isLocale('en') && $post->status === "Draft")
-            <option value="{{$post->status}}">{{__('post.draft')}}</option>
-            <option value="Published">{{__('post.publish')}}</option>
+                <option value="{{$post->status}}">{{__('post.draft')}}</option>
+                <option value="Published">{{__('post.publish')}}</option>
             @endif
             @if (App::isLocale('en') && $post->status === "Published")  
                 <option value="{{$post->status}}">{{__('post.publish')}}</option>

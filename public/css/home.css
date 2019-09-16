@@ -220,6 +220,21 @@
     border-radius: 50%;
 }
 
+/* -----------------MEDIA QUERIES----------------------- */
+@media screen and (max-width: 450px) {
+     .navbar-subtitles:hover {
+        transform: none !important;
+    }
+}
+/* -----------------MEDIA QUERIES FOR IPHONE 6S----------------------- */
+@media screen and (max-width: 450px) {
+    .position-for-iphone-6s {
+        position: fixed;
+        left: 70%;
+        bottom: 82%;
+    }
+}
+
 
 
 

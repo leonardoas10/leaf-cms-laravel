@@ -25,11 +25,12 @@ class UserRequest extends FormRequest
     {
         return [
             'username' => 'required|alpha|min:3',
-            'password' => 'required|min:8',
+            'password' => 'required|confirmed|min:8',
+            'password_confirmation' => 'required|min:8',
             'firstname' => 'required|alpha|min:3',
             'lastname' => 'required|alpha|min:3',
             'email' => 'required|email|min:3',
-            'role' => 'required|alpha',
+            'role' => 'required|starts_with:Admin,Subscriber|ends_with:Admin,Subscriber|alpha',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }

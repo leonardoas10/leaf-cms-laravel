@@ -195,3 +195,20 @@
 .btn-dark:hover {
     color: var(--color) !important;
 }
+
+/* -----------------MEDIA QUERIES----------------------- */
+@media screen and (max-width: 450px) {
+    .hide-on-mobile {
+        display: none; 
+     }
+}
+/* -----------------MEDIA QUERIES FOR IPHONE 6S----------------------- */
+@media screen and (max-width: 450px) {
+    .toggle {
+        margin-top: 0 !important;
+        padding: 5px;
+    }
+    .btn-dark, .btn-light {
+        padding-bottom: 28px !important;
+    }
+}

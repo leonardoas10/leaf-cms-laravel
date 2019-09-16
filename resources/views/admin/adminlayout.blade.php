@@ -97,11 +97,11 @@
                     {{-- TODO PARAMETER PROFILE ROUTE --}}
                     <li>
                         @if (App::isLocale('en'))
-                            <div id="toggle" class="lang-en margin-left-more-lang-buttom">
+                            <div id="toggle" class="lang-en margin-left-more-lang-buttom position-for-iphone-admin">
                                 <input class="toggle" type="checkbox" checked data-toggle="toggle" data-on="English" data-off="Español" data-width="100" data-onstyle="dark">
                             </div>
                         @else
-                            <div id="toggle" class="lang-es margin-left-more-lang-buttom">
+                            <div id="toggle" class="lang-es margin-left-more-lang-buttom position-for-iphone-admin">
                                 <input class="toggle" type="checkbox" data-toggle="toggle" data-on="English" data-off="Español" data-width="100" data-onstyle="dark">
                             </div>
                         @endif 

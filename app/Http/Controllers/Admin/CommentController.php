@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Comment;
 use App\Post;
 use App\Http\Requests\CommentRequest;
+use App;
 
 class CommentController extends Controller
 {
@@ -15,8 +16,16 @@ class CommentController extends Controller
 
         $comments = $comments->map(function ($comment) {
             $comment->content = ucwords($comment->content);
+            if (App::isLocale('es') && $comment->status === "Approved") {
+                $comment->status = "Aprovado";
+            }
+            if (App::isLocale('es') && $comment->status === "Unapproved") {
+                $comment->status = "Desaprovado";
+            }
             return $comment;
         });
+  
+
 
         $posts = Post::all();
         $posts = $posts->where('user_id', auth()->user()->id);
@@ -48,12 +57,11 @@ class CommentController extends Controller
 
     public function update(Comment $comment)
     {
-        if (request()->status === "Approved") {
+        if (request()->status === "Approved" || request()->status === "Aprovado") {
             $comment->approved();
         } else {
             $comment->unapproved();
         }
-
         return back();
     }
 

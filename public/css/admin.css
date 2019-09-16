@@ -204,9 +204,16 @@ input[type="checkbox"]:checked + .cbx {
 
 /* -----------------MEDIA QUERIES----------------------- */
 @media screen and (max-width: 450px) {
-    .hide-on-mobile {
-         display: none; 
-     }
+ 
 }
 
+/* -----------------MEDIA QUERIES FOR IPHONE 6S----------------------- */
+
+@media screen and (max-width: 450px) {
+    .position-for-iphone-admin {
+        position: fixed;
+        left: 55%;
+        bottom: 73%;
+    }
+}
 

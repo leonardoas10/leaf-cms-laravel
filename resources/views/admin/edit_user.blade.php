@@ -8,7 +8,7 @@
     <div class="col-centered">
         <div class="col-md-4">
             <div class="form-group">
-                <label for="firstname">Firstname</label>
+            <label for="firstname">{{__('user.firstname')}}</label>
                 <input id="firstname" type="text" class="form-control input-background" name="firstname" value="{{$user->firstname}}">   
             </div>
             <div class="form-group">
@@ -19,7 +19,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="lastname">Lastname</label>
+                <label for="lastname">{{__('user.lastname')}}</label>
                 <input id="lastname" type="text" class="form-control input-background" name="lastname" value="{{$user->lastname}}">
             </div>
             <div class="form-group ">
@@ -29,23 +29,25 @@
                     </span>
                 @enderror
             </div>
+            @if (Auth::user()->provider === null)
+                <div class="form-group">
+                    <label for="username">{{__('user.username')}}</label>
+                    <input id="username" type="text" class="form-control input-background" name="username" value="{{$user->username}}">
+                </div>
+                <div class="form-group">
+                    @error('username')
+                        <span class="invalid-feedback red-error" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            @endif
             <div class="form-group">
-                <label for="username">Username</label>
-                <input id="username" type="text" class="form-control input-background" name="username" value="{{$user->username}}">
-            </div>
-            <div class="form-group">
-                @error('username')
-                    <span class="invalid-feedback red-error" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">{{__('user.password')}}</label>
                 <input autocomplete="off" type="password" class="form-control input-background" name="password">
             </div>
             <div class="form-group">
-                <label for="password_confirmation">Confirm Password</label>
+                <label for="password_confirmation">{{__('user.confirm_password')}}</label>
                 <input autocomplete="off" type="password" class="form-control input-background" name="password_confirmation">
             </div>
             <div class="form-group">
@@ -59,13 +61,13 @@
         <div class="col-md-4">
             <div class="flex-wrap">
                 <div class="col-md-8 col-centered text-center">
-                    <label for="image" class="">Profile Image</label>
+                    <label for="image" class="">{{__('user.profile_image')}}</label>
                     <input type="file" class="form-control input-background" name="image">
                     <br>
                 </div>
                 <div class="panel-body profile-card col-centered">
                     @if ($user->image === null)
-                        <span><i class="fa fa-camera"></i> Photo</span>
+                        <span><i class="fa fa-camera"></i> {{__('user.photo')}}</span>
                     @elseif($user->provider_id > 1)
                         <img class="img-fluid-profile" src="{{$user->image}}" alt="">
                     @else
@@ -74,19 +76,18 @@
                 </div>
                 <br>
                 <div class="col-md-4 col-centered">
-                    <input class="btn btn-success submit-buttons" type="submit" name="edit_user" value="Edit User"> 
+                    <input class="btn btn-success submit-buttons" type="submit" name="edit_user" value="{{__('user.edit_user')}}"> 
                 </div>
             </div>
         </div> 
         <div class="col-md-4">
             <div class="text-center margin-top-quote">      
-                <p><i class="fa fa-quote-left"></i>  When you are resting...</p>
-                <p>There is another one who is working to be better at...</p>
-                <p>What you want to succeed  <i class="fa fa-quote-right"></i></p>
-                <p>...Anonymous </p>
+                <p><i class="fa fa-quote-left"></i> {{__('user.quote_1')}}</p>
+                <p>{{__('user.quote_2')}}</p>
+                <p>{{__('user.quote_3')}} <i class="fa fa-quote-right"></i></p>
+                <p>{{__('user.quote_4')}}</p>
             </div>
-            <p class="margin-top-quote text-center">This website was built with Laravel Framework V 5.8.</p>
-            <input type="checkbox" data-toggle="toggle">
+            <p class="margin-top-quote text-center">{{__('user.this_website')}}</p>
         </div> 
     </div> 
 </form>

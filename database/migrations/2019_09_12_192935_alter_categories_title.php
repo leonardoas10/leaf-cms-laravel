@@ -27,6 +27,7 @@ class AlterCategoriesTitle extends Migration
     {
         Schema::table('categories', function(Blueprint $table) {
             $table->dropUnique('categories_title_unique');
+            $table->dropIndex('title');
         });
     }
 }

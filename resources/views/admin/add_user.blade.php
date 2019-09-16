@@ -3,7 +3,7 @@
 <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
-        <label for="firstname">Firstname</label>
+    <label for="firstname">{{__('user.firstname')}}</label>
         <input type="text" class="form-control input-background" name="firstname" value="{{ old('firstname') }}"> 
     </div>
     <div class="form-group">
@@ -14,7 +14,7 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="lastname">Lastname</label>
+        <label for="lastname">{{__('user.lastname')}}</label>
         <input type="text" class="form-control input-background" name="lastname" value="{{ old('lastname') }}">
     </div>
     <div class="form-group">
@@ -26,17 +26,17 @@
     </div>
     <div class="form-group">
         <select name="role" id="" class="input-background">
-            <option value="Subscriber">Select Option</option>
-            <option value="Admin">Admin</option>
-            <option value="Subscriber">Subscriber</option>
+            <option value="Subscriber">{{__('user.select_options')}}</option>
+            <option value="Admin">{{__('user.admin')}}</option>
+            <option value="Subscriber">{{__('user.subscriber')}}</option>
         </select>
     </div>
     <div class="form-group">
-        <label for="image">Profile Image</label>
+        <label for="image">{{__('user.profile_image')}}</label>
         <input type="file" class="form-control input-background" name="image">
     </div>
     <div class="form-group">
-        <label for="username">Username</label>
+        <label for="username">{{__('user.username')}}</label>
         <input type="text" class="form-control input-background" name="username" value="{{ old('username') }}">
     </div>
     <div class="form-group">
@@ -47,7 +47,7 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">{{__('user.email')}}</label>
         <input type="email" class="form-control input-background" name="email" value="{{ old('email') }}">
     </div>
     <div class="form-group">
@@ -58,8 +58,12 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control input-background" name="password">
+        <label for="password">{{__('user.password')}}</label>
+        <input autocomplete="off" type="password" class="form-control input-background" name="password">
+    </div>
+    <div class="form-group">
+        <label for="password_confirmation">{{__('user.confirm_password')}}</label>
+        <input autocomplete="off" type="password" class="form-control input-background" name="password_confirmation">
     </div>
     <div class="form-group">
         @error('password')
@@ -69,7 +73,7 @@
         @enderror
     </div>
     <div class="form-group">
-        <input class="btn btn-success submit-buttons" type="submit" value="Add User">
+    <input class="btn btn-success submit-buttons" type="submit" value="{{__('user.add_user')}}">
     </div>
 </form>
 @endsection

@@ -8,6 +8,7 @@ use App\Http\Requests\UserEditRequest;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use App;
 
 class UserController extends Controller
 {
@@ -19,6 +20,12 @@ class UserController extends Controller
             $user->username = ucwords($user->username);
             $user->firstname = ucwords($user->firstname);
             $user->lastname = ucwords($user->lastname);
+            if (App::isLocale('es') && $user->role === "Admin") {
+                $user->role = "Administrador";
+            }
+            if (App::isLocale('es') && $user->role === "Subscriber") {
+                $user->role = "Suscriptor";
+            }
             return $user;
         });
         return view('admin.users', compact('users'));
@@ -53,6 +60,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+
         $user['username'] = ucwords($user['username']);
         $user['firstname'] = ucwords($user['firstname']);
         $user['lastname'] = ucwords($user['lastname']);
@@ -71,8 +79,13 @@ class UserController extends Controller
                 'password' => 'required|confirmed|min:8',
                 'password_confirmation' => 'required|min:8',
             ]);
- 
             $data['password'] = Hash::make($data['password']);
+        }
+
+        if(auth()->user()->provider_id === null) {
+            $data = $request->validate([
+                'username' => 'required|alpha|min:3',
+            ]);
         }
 
         if($request->hasFile('image')) {
@@ -97,5 +110,16 @@ class UserController extends Controller
     public function lastActivity()
     {   
         return User::where('last_activity', '>=', Carbon::now()->subMinute(1))->get('last_activity')->count();
+    }
+
+    public function updateRole(User $user)
+    {
+        if (request()->role === "Admin" || request()->role === "Administrador") {
+            $user->update(['role' => 'Admin']);
+        } else {
+            $user->update(['role' => 'Subscriber']);
+        }
+        
+        return back();
     }
 }

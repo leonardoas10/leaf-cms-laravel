@@ -1,7 +1,7 @@
 @extends('admin.adminlayout')
 @section('content')
 
-@if ($posts->count() === 0 || $subscribers_posts->count() === 0)
+@if ($posts->count() === 0)
     <div class="container">
         <div class="row ">
             <div class="col-md-7 col-centered">

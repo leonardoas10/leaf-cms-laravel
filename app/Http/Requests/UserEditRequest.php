@@ -24,7 +24,6 @@ class UserEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|min:3',
             'firstname' => 'required|alpha|min:3',
             'lastname' => 'required|alpha|min:3',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'

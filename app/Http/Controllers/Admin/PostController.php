@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 
 use App\Post;
 use App\Category;
-use App\User;
 use App;
 
 use App\Http\Requests\PostRequest;
@@ -48,6 +47,10 @@ class PostController extends Controller
         $data['user_id'] = auth()->user()->id;
         $data['user'] = auth()->user()->username;  
 
+        $data = $request->validate([
+            'title' => 'unique:posts',
+        ]);
+
         if($request->hasFile('image')) {
             $fileName = $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('/', $fileName);
@@ -65,9 +68,6 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-  
-
-      
         $categories = Category::all();
         return view('admin.edit_post', compact('post','categories'));
     }

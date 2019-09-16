@@ -24,14 +24,12 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:posts|alpha',
-            'category_id' => 'required|integer',
+            'title' => 'required|alpha',
+            'category_id' => 'required|integer|exists:categories,id',
             'content' => 'required',
             'tags' => 'required|alpha',
             'status' => 'required|starts_with:Published,Draft|ends_with:Published,Draft|alpha',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
-        // ends_with:foo,bar,...
-        // starts_with:foo
     }
 }
