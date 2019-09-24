@@ -42,4 +42,9 @@ return [
     'this_website' => 'Este sitio web fue construido con el Framework Laravel V 5.8.',
     'become_a_member_since' => 'Un miembro desde',
     'edit_your_user' => 'Edita Tu Usuario',
+
+    // Delete Modal
+    'are_you_sure' => '¿Estás seguro?',
+    'you_are_going_to' => 'Eliminarás el siguiente usuario:',
+    'delete_user' => 'Eliminar Usuario'
 ];

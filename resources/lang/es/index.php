@@ -18,4 +18,9 @@ return [
     'read_more' => 'Leer Más',
     'if_you_want_to_comment' => 'Si quieres comentar, registrarte',
     'join_us' => 'Únete',
+
+    // subview post.blade.php
+    'leave_a_comment' => 'Deja un comentario',
+    'your_comment' => 'Tu comentario',
+    'submit' => 'Enviar',
 ];

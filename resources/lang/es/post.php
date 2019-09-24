@@ -38,5 +38,10 @@ return [
     'edit' => 'Editar',
     'content' => 'Contenido',
     'create_post' => 'Crear Publicación',
-    'update' => 'Actualizar'
+    'update' => 'Actualizar',
+
+    // Delete Modal
+    'are_you_sure' => '¿Estás seguro?',
+    'you_are_going_to' => 'Eliminarás la siguiente publicación:',
+    'delete_post' => 'Eliminar Publicación'
 ];

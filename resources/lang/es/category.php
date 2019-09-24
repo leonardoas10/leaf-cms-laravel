@@ -26,5 +26,10 @@ return [
     'apply' => 'Aplicar',
     'create' => 'Crear',
     'edit' => 'Editar',
-    'category_title' => 'Título Categoria'
+    'category_title' => 'Título Categoria',
+
+    // Delete Modal
+    'are_you_sure' => '¿Estás seguro?',
+    'you_are_going_to' => 'Eliminarás la siguiente categoria:',
+    'delete_category' => 'Eliminar Categoria'
 ];

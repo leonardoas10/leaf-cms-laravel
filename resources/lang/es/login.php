@@ -15,8 +15,9 @@ return [
 
     'logout' => 'Cerrar Sesión',
     'login' => 'Iniciar Sesión',
+    'email' => 'Correo Electrónico',
     'password' => 'Contraseña',
     'password_placeholder' => 'Contraseña',
-    'forgot' => 'Perdiste tu contraseña?',
+    'forgot' => '¿Perdiste tu contraseña?',
     'logged_in_as' => 'Conectado como:',
 ];

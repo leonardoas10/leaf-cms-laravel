@@ -30,4 +30,9 @@ return [
     'post' => 'Publicación',
     'date' => 'Fecha',
     'change_status_to' => 'Cambiar Estado a',
+
+    // Delete Modal
+    'are_you_sure' => '¿Estás seguro?',
+    'you_are_going_to' => 'Eliminarás el siguiente comentario:',
+    'delete_comment' => 'Eliminar Comentario'
 ];

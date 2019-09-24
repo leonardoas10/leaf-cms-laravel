@@ -24,12 +24,13 @@ class CommentController extends Controller
             }
             return $comment;
         });
-  
-
 
         $posts = Post::all();
         $posts = $posts->where('user_id', auth()->user()->id);
-        $subscribers_comments = $posts->pluck('comments')->collapse();
+
+
+        $my_comments = $comments->where('user_id', auth()->user()->id);
+        $subscribers_comments = $posts->pluck('comments')->collapse()->merge($my_comments)->unique();
 
         return view('admin.comments', compact('comments', 'subscribers_comments'));
     }
@@ -41,8 +42,8 @@ class CommentController extends Controller
 
     public function store(Post $post, CommentRequest $request)
     {
-        $post->addComment($request->all());
-        return back();
+        $post->addComment($request->all()); 
+        return back()->with('success', __('success.store_comment'));
     }
 
     public function show(Comment $comment)
@@ -68,6 +69,6 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         $comment->delete();
-        return redirect('admin/comments');
+        return redirect('admin/comments')->with('success', __('success.delete_comment'));
     }
 }

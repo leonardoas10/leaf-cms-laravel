@@ -16,6 +16,8 @@ return [
     'contact_us' => "Contáctenos",
     'email_placeholder' => 'Ingrese su email',
     'subject_placeholder' => 'Ingrese título',
+    'subject' => 'Asunto',
+    'email' => 'Correo Electrónico',
     'submit' => 'Enviar',
 
 ];

@@ -26,8 +26,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         Category::create($request->all());
-
-        return redirect('admin/categories');
+        return redirect('admin/categories')->with('success', __('success.create_category') . ' ' . $request->title);
     }
 
     public function show($id)
@@ -43,12 +42,12 @@ class CategoryController extends Controller
     public function update(Category $category, CategoryRequest $request)
     {
         $category->update($request->all());
-        return redirect('admin/categories'); 
+        return redirect('admin/categories')->with('success', __('success.update_category') . ' ' . $request['title']); 
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect('admin/categories');
+        return redirect('admin/categories')->with('success', __('success.delete_category'));
     }
 }

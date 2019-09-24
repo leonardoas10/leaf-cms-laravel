@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Cache;
-use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticable;
 
 class User extends Authenticable

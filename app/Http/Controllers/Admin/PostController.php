@@ -7,8 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Category;
 use App;
-
+use App\Http\Requests\PostEditRequest;
 use App\Http\Requests\PostRequest;
+
 
 class PostController extends Controller
 {
@@ -44,12 +45,9 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $data = $request->all();
+
         $data['user_id'] = auth()->user()->id;
         $data['user'] = auth()->user()->username;  
-
-        $data = $request->validate([
-            'title' => 'unique:posts',
-        ]);
 
         if($request->hasFile('image')) {
             $fileName = $request->file('image')->getClientOriginalName();
@@ -58,7 +56,7 @@ class PostController extends Controller
         }
 
         Post::create( $data );
-        return redirect('admin/posts'); 
+        return redirect('admin/posts')->with('success', __('success.create_post') . ' ' . $data['title']); 
     }
 
     public function show($id)
@@ -72,7 +70,7 @@ class PostController extends Controller
         return view('admin.edit_post', compact('post','categories'));
     }
 
-    public function update(Post $post, PostRequest $request)
+    public function update(Post $post, PostEditRequest $request)
     {
         $data = $request->all();
 
@@ -84,12 +82,12 @@ class PostController extends Controller
         }
 
         $post->update($data);
-        return redirect('admin/posts'); 
+        return redirect('admin/posts')->with('success', __('success.update_post') . ' ' . $data['title']); 
     }
 
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect('admin/posts');
+        return redirect('admin/posts')->with('success', __('success.delete_post'));
     }
 }

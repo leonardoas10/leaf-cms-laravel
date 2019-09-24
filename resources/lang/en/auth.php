@@ -22,6 +22,7 @@ return [
     'firstname' => 'First Name',
     'lastname' => 'Last Name',
     'username' => 'Username',
+    'email' => 'E-Mail',
     'password' => 'Password',
     'confirm_password' => 'Confirm Password',
     'or_register_with' => 'Or register with',

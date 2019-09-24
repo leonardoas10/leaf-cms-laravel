@@ -6,12 +6,18 @@
 <section id="login">
     <div class="container">
         <div class="row">
-            <div class="col-xs-6 col-xs-offset-3">
+            <div class="col-md-6 col-md-offset-3">
                 <div class="form-wrap">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success success-timer margin-bottom-zero padding-zero size-for-smarthphone text-center">
+                        {{Session::get('success') }}
+                    </div>
+                @endif
                 <h1 class="text-center">{{ __('contact.contact_us') }}</h1>
-                    <form role="form" action="./phpMailer/MailerConfig.php" method="post" id="login-form" autocomplete="off">
+                    <form role="form" action="{{route('contact.store')}}" method="post" id="login-form" autocomplete="off">
+                        @csrf
                         <div class="form-group row form-group-less-margin">
-                            <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                            <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('contact.email') }}</label>
                             <div class="col-md-7">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror input-background" name="email" value="{{ old('email') }}"  autocomplete="email">
                             </div>
@@ -26,9 +32,9 @@
                             </div>
                         </div>
                         <div class="form-group row form-group-less-margin">
-                            <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('Subject') }}</label>
+                            <label for="subject" class="col-md-3 col-form-label text-md-right">{{ __('contact.subject') }}</label>
                             <div class="col-md-7">
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror input-background" name="email" value="{{ old('email') }}"  autocomplete="email">
+                                <input id="subject" type="text" class="form-control @error('subject') is-invalid @enderror input-background" name="subject" value="{{ old('subject') }}" >
                             </div>
                         </div>
                         <div class="form-group row form-group-less-margin">

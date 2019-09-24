@@ -12,7 +12,6 @@ use App;
 
 class UserController extends Controller
 {
-    
     public function index()
     {   
         $users = User::all(); 
@@ -48,7 +47,7 @@ class UserController extends Controller
         }
 
         User::create($data);    
-        return redirect('admin/users'); 
+        return redirect('admin/users')->with('success', __('success.create_user') . ' ' . ucwords($data['username'])); 
 
     }
 
@@ -60,7 +59,6 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-
         $user['username'] = ucwords($user['username']);
         $user['firstname'] = ucwords($user['firstname']);
         $user['lastname'] = ucwords($user['lastname']);
@@ -97,14 +95,14 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect('admin/profile/1'); 
+        return redirect('admin/profile/1')->with('success', __('success.update_user') . ' ' . $data['firstname'] . ' ' . $data['lastname']); 
     }
 
     public function destroy(User $user)
     {
         $user->delete();
         
-        return redirect('admin/users');
+        return redirect('admin/users')->with('success', __('success.delete_user'));
     }
 
     public function lastActivity()

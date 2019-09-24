@@ -13,7 +13,7 @@
                         <img class="img-responsive" src="{{asset('images/' . $post->image)}}" alt="/post_image">
                     </a>
                     <br>
-                    <p>{{str_limit($post->content, $limit = 300, $end = '...')}}</p>
+                    <p>{{strip_tags(html_entity_decode(str_limit($post->content, $limit = 300, $end = '...')))}}</p>
                     <a class="btn btn-primary read-more" href="{{ route('post.show', ['post' => $post->id ]) }}">{{__('index.read_more')}} <span class="glyphicon glyphicon-chevron-right"></span></a>
                 @endif
             @endforeach

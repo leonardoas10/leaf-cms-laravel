@@ -32,11 +32,11 @@
     @endguest
     @auth
         <div class="well">
-            <h4>Leave a comment {{Auth::user()->username}}</h4>
+            <h4>{{__('index.leave_a_comment')}} {{Auth::user()->username}}</h4>
             <form role="form" action="{{ route('post.comment.store', $post) }}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="content">Your Comment</label>
+                    <label for="content">{{__('index.your_comment')}}</label>
                     <textarea type="text" class="form-control input-background" id="body" cols="30" rows="10" name="content"></textarea>
                 </div>
                 <div class="form-group">
@@ -46,9 +46,15 @@
                         </span>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary comment-button" name="create_comment">Submit</button>
+                <button type="submit" class="btn btn-primary comment-button" name="create_comment">{{__('index.submit')}}</button>
             </form>
         </div>   
+
+        @if (\Session::has('success'))
+            <div class="alert alert-success success-timer margin-bottom-zero text-center">
+                {{Session::get('success') }}
+            </div>
+        @endif
     @endauth
 
     <!-- Comment -->
@@ -65,7 +71,7 @@
                     <h4>{{$comment->user->username}}
                     <small>{{$comment->created_at}}</small>
                     </h4>
-                    <span>{{$comment->content}}</span>
+                    <span>{{strip_tags(html_entity_decode($comment->content))}}</span>
                 </div>
             </div>
         @endif

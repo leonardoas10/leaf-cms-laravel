@@ -121,11 +121,41 @@
                         <td><input type="submit" class='btn-xs btn-success submit-buttons table-column-size-button-td' value='{{ __('category.edit') }}'></td>                    
                     </form>
                 @endif
-                <form action="{{ route('categories.destroy', $category->id ) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                        <td><input class='btn-xs btn-danger table-column-size-button-td' type='submit' value="{{ __('category.delete') }}"></td>
-                </form>
+                    <td>
+                        <button type="button" class="btn-xs btn-danger table-column-size-button-td" data-toggle="modal" data-target="#delete_category_modal_{{ $category->id }}">
+                            {{ __('category.delete') }}
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="delete_category_modal_{{ $category->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">{{ __('category.are_you_sure') }}</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span class="close-x" aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <form action="{{ route('categories.destroy', $category->id ) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="modal-body">
+                                            
+                                            <p class="text-center">{{ __('category.you_are_going_to') }}</p>
+                                            <p class="text-center">{{$category->title}}</p>
+                                                
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class='btn-xs btn-danger' type='submit'  value="">{{ __('category.delete_category') }}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+              
+                        </div>
+                        <!-- End Modal --> 
+                    </td>
                     </tr>
                     @endforeach
                 </tbody>

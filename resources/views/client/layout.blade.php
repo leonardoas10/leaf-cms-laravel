@@ -102,6 +102,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <script src="{{asset('js/lang.js')}}"></script>
     <script>lang("{{ csrf_token() }}");</script>
+    <script src="{{asset('js/common.js')}}"></script>
     <!-- jQuery -->
     <script src="{{asset('js/jquery.js')}}"></script>
     <!-- Bootstrap Core JavaScript -->

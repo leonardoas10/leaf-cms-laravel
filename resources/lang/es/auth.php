@@ -22,6 +22,7 @@ return [
     'firstname' => 'Nombre',
     'lastname' => 'Apellido',
     'username' => 'Usuario',
+    'email' => 'Correo Electrónico',
     'password' => 'Contraseña',
     'confirm_password' => 'Confirmar Contraseña',
     'or_register_with' => 'O registrate con',

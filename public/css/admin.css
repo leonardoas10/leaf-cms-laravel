@@ -202,9 +202,14 @@ input[type="checkbox"]:checked + .cbx {
     background-image: linear-gradient(TO RIGHT, var(--color), RGB(244, 255, 248))!important;
 }
 
+/* CLOSE MODAL  */
+.close {
+    color: var(--color) !important;
+    opacity: 0.7 !important;
+}
 /* -----------------MEDIA QUERIES----------------------- */
 @media screen and (max-width: 450px) {
- 
+
 }
 
 /* -----------------MEDIA QUERIES FOR IPHONE 6S----------------------- */

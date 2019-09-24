@@ -43,7 +43,8 @@
                 <li class="dropdown ">
                     <a href="#" class="dropdown-toggle " data-toggle="dropdown"><i
                             class="fa fa-user navbar-subtitles"></i>
-                            {{ucwords(auth()->user()->username)}}
+                            <span id="username"></span>
+                 
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     <li><a href="{{ route('user.profile', 1) }}"><i class="fa fa-fw fa-user navbar-subtitles"></i> {{__('navbar.profile')}}</a>
@@ -114,11 +115,16 @@
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            <div>{{ucwords(auth()->user()->username)}}</div>
-                        </h1>
+                    <h1 class="page-header col-lg-12">
+                    <div class="col-lg-4">
+                        <div>{{ucwords(auth()->user()->username)}}</div>    
                     </div>
+                        @if (\Session::has('success'))
+                            <div class="alert alert-success success-timer margin-bottom-zero padding-zero size-for-smarthphone">
+                                {{Session::get('success') }}
+                            </div>
+                        @endif
+                    </h1>
                 </div>
                 @yield('content')
             </div>
@@ -133,9 +139,18 @@
     <script src="{{asset('js/lang.js')}}"></script>
     <script>lang("{{ csrf_token() }}");</script>
     <script src="{{asset('js/admin.js')}}"></script>
+    <script src="{{asset('js/common.js')}}"></script>
     <script>
         var locale = '{{ config('app.locale') }}';
         checkOrUncheck(locale);
+
+        const username_for_smarthphone = "<?php echo str_limit(ucwords(auth()->user()->username), $limit = 8, $end = '') ?>";
+        const username = "<?php echo str_limit(ucwords(auth()->user()->username), $limit = 20, $end = '...') ?>";
+        if (screen.width <= 450 ) 
+            $('#username').prepend(username_for_smarthphone);
+        else {
+            $('#username').prepend(username);
+        }
     </script>
     <!-- jQuery -->
     <script src="{{asset('js/jquery.js')}}"></script>
@@ -143,6 +158,7 @@
     <script src="{{asset('js/ckeditor.js')}}"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
+
     @stack('scripts')
     @stack('google_chars')
 

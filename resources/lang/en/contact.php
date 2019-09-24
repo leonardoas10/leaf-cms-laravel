@@ -16,5 +16,7 @@ return [
     'contact_us' => 'Contact Us',
     'email_placeholder' => 'Enter your email',
     'subject_placeholder' => 'Enter your subject',
+    'subject' => 'Subject',
+    'email' => 'E-Mail',
     'submit' => 'Submit',
 ];

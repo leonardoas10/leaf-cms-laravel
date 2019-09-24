@@ -38,5 +38,10 @@ return [
     'edit' => 'Edit',
     'content' => 'Content',
     'create_post' => 'Create Post',
-    'update' => 'Update'
+    'update' => 'Update',
+
+    // Delete Modal
+    'are_you_sure' => 'Are you sure?',
+    'you_are_going_to' => 'You are going to eliminate the follow post',
+    'delete_post' => 'Delete Post'
 ];

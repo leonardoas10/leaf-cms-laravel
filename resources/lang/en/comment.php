@@ -30,4 +30,9 @@ return [
     'post' => 'Post',
     'date' => 'Date',
     'change_status_to' => 'Change Status to',
+
+    // Delete Modal
+    'are_you_sure' => 'Are you sure?',
+    'you_are_going_to' => 'You are going to eliminate the follow comment',
+    'delete_comment' => 'Delete Comment'
 ];

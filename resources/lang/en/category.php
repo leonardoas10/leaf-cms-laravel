@@ -26,6 +26,10 @@ return [
     'apply' => 'Apply',
     'create' => 'Create',
     'edit' => 'Edit',
-    'category_title' => 'Category Title'
-    
+    'category_title' => 'Category Title',
+
+    // Delete Modal
+    'are_you_sure' => 'Are you sure?',
+    'you_are_going_to' => 'You are going to eliminate the follow category',
+    'delete_category' => 'Delete Category'
 ];

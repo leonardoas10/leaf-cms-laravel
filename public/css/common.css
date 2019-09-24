@@ -146,12 +146,21 @@
     margin-bottom: 3% !important;
 }
 
+.margin-bottom-zero {
+    margin-bottom: 0 !important;
+}
+
 .form-group-less-margin {
     margin-bottom: 5px !important;
 }
 
+/* PADDING'S */
 .panel-body-less-padding-bottom {
     padding-bottom: 5px !important;
+}
+
+.padding-zero {
+    padding: 0 !important;
 }
 /* DISPLAY FLEX */
 .flex-wrap {

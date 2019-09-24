@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="form-group row form-group-less-margin">
-                                <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                                <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('auth.email') }}</label>
                                 <div class="col-md-7">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror input-background" name="email" value="{{ old('email') }}"  autocomplete="email">
                                 </div>

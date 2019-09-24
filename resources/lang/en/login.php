@@ -15,6 +15,7 @@ return [
     
     'logout' => 'Log Out',
     'login' => 'Log In',
+    'email' => 'E-Mail',
     'password' => 'Password',
     'password_placeholder' => 'Password',
     'forgot' => 'Forgot your password?',

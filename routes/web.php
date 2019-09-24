@@ -17,6 +17,7 @@ Route::post('/', 'Client\HomeController@index');
 Route::get('/category/{category}', 'Client\HomeController@index')->name('category.index');
 Route::get('/post/{post}', 'Client\HomeController@show')->name('post.show');
 Route::resource('contact', 'Client\ContactController');
+Route::get('/status', 'AlreadyLogin@index')->name('home');
 
 // ADMIN
 Route::prefix('admin')->middleware('auth')->group(function() {
@@ -38,8 +39,6 @@ Route::prefix('admin')->middleware('auth')->group(function() {
 });
 
 Auth::routes();
-
-Route::get('/status', 'AlreadyLogin@index')->name('home');
 
 // LANGUAGE
 Route::post('/lang/{lang}', 'LangController@lang');
