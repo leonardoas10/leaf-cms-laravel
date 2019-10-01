@@ -9,7 +9,7 @@
                     <div class="panel-body login-card">
                         <div class="text-center">
                             <h3><i class="fa fa-gears fa-4x"></i></h3>
-                            <h2 class="text-center"><i class="fa fa-quote-left"></i> Ups! First to all, create a category <i class="fa fa-quote-right "></i></h2>
+                            <h2 class="text-center"><i class="fa fa-quote-left"></i> {{__('post.ups')}} <i class="fa fa-quote-right "></i></h2>
                             <div class="row">
                                 <div class="col-md-3 col-centered">
                                     <a href="{{ route('categories.index') }}" class="btn btn-primary btn-block submit-buttons ">{{ __('Go To Categories') }}</a>

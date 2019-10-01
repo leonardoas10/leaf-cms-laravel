@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Leaf Laravel CMS'),
+    'name' => env('APP_NAME', 'Leaf Shared'),
 
     /*
     |--------------------------------------------------------------------------

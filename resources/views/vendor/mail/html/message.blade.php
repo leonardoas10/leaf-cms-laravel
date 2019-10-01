@@ -2,7 +2,7 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            Leaf Laravel CMS
+            Leaf Shared
         @endcomponent
     @endslot
 
@@ -21,7 +21,7 @@
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')
-            Copyright © {{ date('Y') }}. Leaf Laravel CMS @lang('All rights reserved.')
+            Copyright © {{ date('Y') }}. Leaf Shared @lang('All rights reserved.')
         @endcomponent
     @endslot
 @endcomponent

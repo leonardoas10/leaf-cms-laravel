@@ -7,7 +7,6 @@ use App\Category;
 use App\Comment;
 use App\Post;
 use App\User;
-// TODO reciclar
 
 class DashboardController extends Controller
 {

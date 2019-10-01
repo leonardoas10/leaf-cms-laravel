@@ -18,6 +18,7 @@ return [
     'logout' => 'Cerrar Sesión',
     'login' => 'Iniciar Sesión',
     'register' => 'Registrate',
+    'about' => 'Sobre Leaf Shared',
 
     // --------- NAVBAR ADMIN ------------
     'users_online' => 'Usuarios Online',

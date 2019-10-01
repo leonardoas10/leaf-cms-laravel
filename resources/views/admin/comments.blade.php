@@ -99,46 +99,36 @@
                             <div class="modal fade" id="delete_category_modal_{{ $comment->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="exampleModalLabel">{{ __('comment.are_you_sure') }}</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span class="close-x" aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form action="{{ route('comments.destroy', $comment->id ) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <div class="modal-body">
-                                            
-                                            <p class="text-center">{{ __('comment.you_are_going_to') }}</p>
-                                            <p class="text-center">{{strip_tags(html_entity_decode(str_limit($comment->content, $limit = 30, $end = '...')))}}</p>
-                                             
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="exampleModalLabel">{{ __('comment.are_you_sure') }}</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span class="close-x" aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button class='btn-xs btn-danger' type='submit'  value="">{{ __('comment.delete_comment') }}</button>
-                                        </div>
-                                    </form>
+                                        <form action="{{ route('comments.destroy', $comment->id ) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <div class="modal-body">
+                                                <p class="text-center">{{ __('comment.you_are_going_to') }}</p>
+                                                <p class="text-center">{{strip_tags(html_entity_decode(str_limit($comment->content, $limit = 30, $end = '...')))}}</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class='btn-xs btn-danger' type='submit'  value="">{{ __('comment.delete_comment') }}</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </td>
-                        <!-- End Modal -->
-
-                        {{-- <form action="{{ route('comments.destroy', $comment->id ) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <td><input class='btn-xs btn-danger table-column-size-button-td' type='submit'  value="{{ __('comment.delete') }}"></td>
-                            </form> --}}
                     </tr>   
                     @endforeach
                 </tbody>
             </div>
         </table>
-        </div>
-    @endif
-            
-    @endsection
+    </div>
+@endif         
+@endsection
 
-    @push('scripts')
+@push('scripts')
     <script>bulkOperations('comment', "{{ csrf_token() }}");</script>
-    @endpush
+@endpush

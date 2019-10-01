@@ -68,7 +68,7 @@
             </form> 
             <div class="form-group row mb-0 form-group-less-margin">
                 <div class="col-md-7 offset-md-2  col-centered ">
-                <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary margin-left-for-facebook-login-iphone-6s"><i class="fa fa-facebook margin-right-more-facebook-icon"></i> {{__('auth.login_with')}} Facebook</a>
+                    <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary margin-left-for-facebook-login-iphone-6s"><i class="fa fa-facebook margin-right-more-facebook-icon"></i> {{__('auth.login_with')}} Facebook</a>
                 </div>
             </div>
         @endif

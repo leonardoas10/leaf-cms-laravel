@@ -17,6 +17,7 @@ const checkOrUncheck = function(locale) {
                     $('.checkBoxes').each(function(index, checkbox) {
                         this.checked = true;
                     });
+                    
                 }
             } else {
                 if ($this.hasClass('check')) {
@@ -73,6 +74,7 @@ function lastActivity() {
 setInterval(function() {
     lastActivity();
 },1000);
+
 
 
 

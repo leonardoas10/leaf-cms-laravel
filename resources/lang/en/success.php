@@ -23,4 +23,5 @@ return [
     'delete_user' => 'You have deleted an user',
     'delete_category' => 'You have deleted a category',
     'delete_post' => 'You have deleted a post',
+    'we_found' => 'We found: '
 ];

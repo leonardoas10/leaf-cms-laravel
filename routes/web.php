@@ -18,6 +18,8 @@ Route::get('/category/{category}', 'Client\HomeController@index')->name('categor
 Route::get('/post/{post}', 'Client\HomeController@show')->name('post.show');
 Route::resource('contact', 'Client\ContactController');
 Route::get('/status', 'AlreadyLogin@index')->name('home');
+Route::get('/about', function() {return view('client.about'); })->name('about.index');
+Route::get('/privacy-policy', function() {return view('leaf-laravel-cms-privacy'); })->name('privacy-policy');
 
 // ADMIN
 Route::prefix('admin')->middleware('auth')->group(function() {

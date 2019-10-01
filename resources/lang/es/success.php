@@ -23,4 +23,5 @@ return [
     'delete_user' => 'Has eliminado un usuario',
     'delete_category' => 'Has eliminado una categoria',
     'delete_post' => 'Has eliminado una publicación',
+    'we_found' => 'Hemos encontrado: '
 ];

@@ -9,9 +9,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>CMS Laravel PROYECT</title>
-     <!-- Scripts -->
-     <script src="{{ asset('js/app.js') }}" defer></script>
+    <title>Leaf Shared</title>
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/blog-home.css')}}" type="text/css">
@@ -22,6 +20,7 @@
     <link rel="stylesheet" href="{{asset('css/common.css')}}" type="text/css">
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
     <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
+    <link rel="shortcut icon" href="{{asset('images/leaf-icon.png')}}" />
 </head>
 
 <body>
@@ -36,7 +35,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="/"><span class="navbar-brand glyphicon glyphicon-leaf leaf-icon"></span></a>
-                <a class=" navbar-brand navbar-title" href="/">Leaf Laravel CMS</a>
+                <a class=" navbar-brand navbar-title" href="/">Leaf Shared</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -44,6 +43,7 @@
                     <li><a class="navbar-subtitles" href="{{route('category.index', ['category' => $category->id])}}">{{$category->title}}</a></li>
                     @endforeach
                     <li><a class="navbar-subtitles" href="{{ route('contact.index') }}">{{ __('navbar.contact') }}</a></li>
+                    <li><a class="navbar-subtitles" href="{{ route('about.index') }}">{{ __('navbar.about') }}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (auth()->user())
@@ -77,11 +77,12 @@
         </div>
         <!-- /.container -->
     </nav>
+
     <div class="container">
             <div class="row">
                 @yield('content')
             </div>
-            <hr>
+            <hr class="hr-post">
         <footer>
             <div class="row">
                 <div class="col-lg-12">
@@ -89,7 +90,7 @@
                         <a class="linkedin-link" href="https://www.linkedin.com/in/leonardoas10/" target="_blank">Linkedin Profile</a>
                         <img width="18" src="{{asset('images/linkedin.png')}}" alt="icon_linkedin"></a>
                     </p>
-                    <p class="linkedin-text">{{ __('auth.copyright') }} &copy; Leaf Laravel CMS 2019</p>
+                    <p><span class="linkedin-text">{{ __('auth.copyright') }} &copy; Leaf Shared 2019 /</span> <a class="linkedin-link" href="{{route('privacy-policy')}}">{{ __('auth.privacy_policy') }}</a></p>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -103,13 +104,12 @@
     <script src="{{asset('js/lang.js')}}"></script>
     <script>lang("{{ csrf_token() }}");</script>
     <script src="{{asset('js/common.js')}}"></script>
+    <script src="{{asset('js/client.js')}}"></script>
     <!-- jQuery -->
     <script src="{{asset('js/jquery.js')}}"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <!-- CKEditor-->
     <script src="{{asset('js/ckeditor.js')}}"></script>
-
-
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
 </body>

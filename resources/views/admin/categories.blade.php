@@ -23,6 +23,13 @@
                                             <input class="btn btn-success submit-buttons" type="submit" name="submit" value="{{ __('category.add_a_new_category') }}">
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        @error('title')
+                                            <span class="invalid-feedback red-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -75,10 +82,10 @@
             </form>
         </div>
     @endif
+
     <form method="post">
     @csrf
     <div class="col-xs-5">
-        <div></div>
         <table class="table table-bordered table-hover tr-background">
             <div class="row">
                 <div id="bulkOptionsContainer" class="col-xs-4">
@@ -109,7 +116,7 @@
                         <td class="table-column-size-id hide-on-mobile">{{$category->id}}</td>
                         <td class="table-column-size-categories">{{$category->title}}</td>
                 </form>
-                {{-- TODO --}}
+
                 @if (Request::is('*/edit'))
                     <form action="{{ route('categories.index') }}">  
                         @csrf    
@@ -121,11 +128,10 @@
                         <td><input type="submit" class='btn-xs btn-success submit-buttons table-column-size-button-td' value='{{ __('category.edit') }}'></td>                    
                     </form>
                 @endif
-                    <td>
+                        <td>
                         <button type="button" class="btn-xs btn-danger table-column-size-button-td" data-toggle="modal" data-target="#delete_category_modal_{{ $category->id }}">
                             {{ __('category.delete') }}
                         </button>
-
                         <!-- Modal -->
                         <div class="modal fade" id="delete_category_modal_{{ $category->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -152,18 +158,17 @@
                                     </form>
                                 </div>
                             </div>
-              
                         </div>
                         <!-- End Modal --> 
-                    </td>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
         </table>
     </div>
 @endif
+<script>bulkOperations('category', "{{ csrf_token() }}");</script>
 @endsection
 
-@push('scripts')
-<script>bulkOperations('category', "{{ csrf_token() }}");</script>
-@endpush
+
+

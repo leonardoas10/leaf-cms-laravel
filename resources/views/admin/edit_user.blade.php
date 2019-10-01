@@ -3,7 +3,7 @@
 
 
 <form action="{{ route('users.update', $user->id ) }}" method="post" enctype="multipart/form-data">
-        @method('PATCH')
+    @method('PATCH')
     @csrf
     <div class="col-centered">
         <div class="col-md-4">
@@ -65,13 +65,13 @@
                     <input type="file" class="form-control input-background" name="image">
                     <br>
                 </div>
-                <div class="panel-body profile-card col-centered">
+                <div class="panel-body profile-card col-centered border-image">
                     @if ($user->image === null)
                         <span><i class="fa fa-camera"></i> {{__('user.photo')}}</span>
                     @elseif($user->provider_id > 1)
-                        <img class="img-fluid-profile" src="{{$user->image}}" alt="">
+                        <img class="img-fluid-profile border-image" src="{{$user->image}}" alt="">
                     @else
-                        <img class="img-fluid-profile" src="{{asset('images/' . $user->image)}}" alt="profile photo">
+                        <img class="img-fluid-profile border-image" src="{{asset('images/' . $user->image)}}" alt="profile photo">
                     @endif
                 </div>
                 <br>

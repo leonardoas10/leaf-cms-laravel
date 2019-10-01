@@ -73,7 +73,7 @@
                         <td>{{$post->title}}</td>
                         <td>{{$post->category->title}}</td>
                         <td>{{$post->status}}</td>
-                        <td><image class="img-fluid" src="{{asset('images/' . $post->image)}}"></td>
+                        <td><a href="{{ route('post.show', $post->id ) }}"><image class="img-fluid border-image" src="{{asset('images/' . $post->image)}}"></a></td>
                         <td>{{$post->tags}}</td>
                         <td>{{trans_choice('post.views', $post->views_count)}}</td>
                         <td>{{$post->created_at}}</td>
@@ -125,8 +125,8 @@
     </table>
 </div>
 @endif
+<script>bulkOperations('post', "{{ csrf_token() }}");</script>
 @endsection
 
-@push('scripts')
-<script>bulkOperations('post', "{{ csrf_token() }}");</script>
-@endpush
+
+

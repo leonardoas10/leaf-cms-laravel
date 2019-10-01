@@ -34,11 +34,12 @@ return [
     'date' => 'Date',
     'view_post' => 'View Post',
     'comments' => 'Comments',
-    'comments_count' => "[0] :count: Bad|[1] :count: is a good start|[2-5] :count: it makes impact",
+    'comments_count' => "[0] :count: Bad|[1] :count: is a good start|[2-5] :count: It makes impact",
     'edit' => 'Edit',
     'content' => 'Content',
     'create_post' => 'Create Post',
     'update' => 'Update',
+    'ups' => 'Ups! First to all, create a category',
 
     // Delete Modal
     'are_you_sure' => 'Are you sure?',

@@ -7,11 +7,10 @@
     <p><span class="glyphicon glyphicon-time time-icon"></span> {{__('index.posted_on')}} {{$post->created_at}}</p>
     <hr class="hr-post">
     <a href="post.php?p_id=">
-        <img class="img-responsive" src="{{asset('images/' . $post->image)}}" alt="/post_image">
+        <img class="img-responsive border-image" src="{{asset('images/' . $post->image)}}" alt="/post_image">
     </a>
     <br>
-    <p>{{strip_tags(html_entity_decode($post->content))}}</p>
-    <!-- Comments Form -->
+    <div class="text-justify">{!! $post->content !!}</div>
 
     @guest
         <div class="panel panel-default">
@@ -71,7 +70,7 @@
                     <h4>{{$comment->user->username}}
                     <small>{{$comment->created_at}}</small>
                     </h4>
-                    <span>{{strip_tags(html_entity_decode($comment->content))}}</span>
+                    <span class="text-justify">{!! $comment->content !!}</span>
                 </div>
             </div>
         @endif

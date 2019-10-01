@@ -39,6 +39,7 @@ return [
     'content' => 'Contenido',
     'create_post' => 'Crear Publicación',
     'update' => 'Actualizar',
+    'ups' => 'Ups! Primero crea una categoría',
 
     // Delete Modal
     'are_you_sure' => '¿Estás seguro?',

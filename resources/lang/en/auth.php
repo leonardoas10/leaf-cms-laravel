@@ -27,17 +27,17 @@ return [
     'confirm_password' => 'Confirm Password',
     'or_register_with' => 'Or register with',
 
-    //complete.blade.php
+    // complete.blade.php
     'welcome' => 'Welcome',
-    'last_step' => 'Last step, create your password to become part of Leaf Laravel CMS',
+    'last_step' => 'Last step, create your password to become part of Leaf Shared',
     'join_us' => 'Join Us',
 
-    //facebook Icon
+    // facebook Icon
     'login_with' => 'Log in with',
     'register_with' => 'Register with',
 
     // footer
     'developed_by' => 'Developed By:',
     'copyright' => 'Copyright',
-
+    'privacy_policy' => 'Privacy Policy',
 ];

@@ -31,7 +31,7 @@ class PostStoreTest extends TestCase
             'image' => '',
         ];
 
-        $response = $this->json('POST', 'admin/posts/', $payload);
+        $response = $this->json('POST', 'admin/posts/', $payload)->dump();
 
         $response->assertStatus(302)->assertRedirect('admin/posts');
         $this->assertDatabaseHas('posts', $payload);

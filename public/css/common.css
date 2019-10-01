@@ -204,6 +204,19 @@
     color: var(--color) !important;
 }
 
+/* BORDER IMAGE */
+.border-image {
+    border-radius: 5px !important;
+}
+
+.ck:hover {
+    color: var(--color) !important;
+}
+
+.ck-button:hover, .ck-content:hover {
+    background-color: var(--color-background) !important; 
+}
+
 /* -----------------MEDIA QUERIES----------------------- */
 @media screen and (max-width: 450px) {
     .hide-on-mobile {

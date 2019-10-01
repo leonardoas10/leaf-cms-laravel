@@ -27,17 +27,17 @@ return [
     'confirm_password' => 'Confirmar Contraseña',
     'or_register_with' => 'O registrate con',
 
-    //complete.blade.php
+    // complete.blade.php
     'welcome' => 'Bienvenido',
-    'last_step' => 'Ultimo paso, crea tu contraseña para formar parte de Leaf Laravel CMS ',
+    'last_step' => 'Ultimo paso, crea tu contraseña para formar parte de Leaf Shared ',
     'join_us' => 'Unete a nosotros',
 
-    //facebook Icon
+    // facebook Icon
     'login_with' => 'Ingresa con',
     'register_with' => 'Registrate con',
  
     // footer
     'developed_by' => 'Desarrollado por:',
     'copyright' => 'Derechos de Autor',
-
+    'privacy_policy' => 'Política de Privacidad',
 ];

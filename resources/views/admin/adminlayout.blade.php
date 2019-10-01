@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laravel ADMIN</title>
+    <title>Leaf Shared ADMIN</title>
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.minadmin.css')}}" type="text/css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{asset('css/common.css')}}" type="text/css">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
+    <link rel="shortcut icon" href="{{asset('images/leaf-icon.png')}}" />
 </head>
 
 <body>
@@ -34,7 +35,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href=" {{ route('admin.index') }}"><span class="navbar-brand glyphicon glyphicon-leaf leaf-icon"></span></a>
-                <a class="navbar-brand navbar-title" href=" {{ route('admin.index') }}">Leaf Laravel ADMIN</a>
+                <a class="navbar-brand navbar-title" href=" {{ route('admin.index') }}">Leaf Shared ADMIN</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -65,7 +66,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav navbar-vertical">
-                <li><a href=" {{ route('admin.index') }}"><i class="fa fa-fw fa-dashboard"></i>{{__('navbar.my_data')}}</a></li>
+                    <li><a href=" {{ route('admin.index') }}"><i class="fa fa-fw fa-dashboard"></i>{{__('navbar.my_data')}}</a></li>
                     @if (Auth::user()->role === "Admin")
                         <li><a href=" {{ route('admin.dashboard') }}"><i class="fa fa-fw fa-dashboard"></i>{{__('navbar.dashboard')}}</a></li>
                     @endif
@@ -81,8 +82,8 @@
                         <li><a href="{{ route('categories.index') }}"><i class="fa fa-fw fa-wrench"></i> {{__('navbar.categories')}}</a></li>
                     @endif
                     
-                    <li class=""><a href="{{ route('comments.index') }}"><i class="fa fa-fw fa-comment"></i> {{__('navbar.comments')}}</a>
-                    </li>
+                    <li class=""><a href="{{ route('comments.index') }}"><i class="fa fa-fw fa-comment"></i> {{__('navbar.comments')}}</a></li>
+            
                     @if (Auth::user()->role === "Admin")
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i

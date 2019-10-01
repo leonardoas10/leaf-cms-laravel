@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Client;
-use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use \App\Category;
 use \App\Post;
 
@@ -13,13 +12,18 @@ class HomeController extends Controller
         $search = request('search');
         
         if($category->exists) {
-            $posts = $category->posts()->paginate(3);
-        } else if($search) {
+            $posts = $category->posts()->latest()->paginate(2);
+        } 
+        else if($search) {
             $word = '%' . $search . '%';
-            $posts = Post::where("tags", "like", $word)->paginate(3);
+            $posts = Post::latest()->where("tags", "like", $word)->paginate(2);
+            if($posts->count() === 0) {
+                return back()->with('danger', __('danger.not_found') . $search);
+            }
+            request()->session()->flash('success', __('success.we_found') . $search); 
         }
         else {
-            $posts = Post::paginate(3);
+            $posts = Post::latest()->paginate(2);
         }
 
         return view('client.index', compact('posts'));

@@ -19,8 +19,8 @@ class SocialController extends Controller
         $request->password = Hash::make($request->password);
 
         $user = User::where('provider_id', session()->get('get_info')->id)->first();
-        if (!$user) {
 
+        if (!$user) {
             $user = User::create([
                 'username' => session()->get('get_info')->name,
                 'firstname' => session()->get('get_info')->user['first_name'],
@@ -32,7 +32,9 @@ class SocialController extends Controller
                 'provider_id' => session()->get('get_info')->id
             ]);
         }
+
         auth()->login($user);
+        
         return redirect('admin/posts'); 
     }
 
@@ -43,7 +45,8 @@ class SocialController extends Controller
 
     public function callback($provider)
     {
-        $getInfo = Socialite::driver($provider)->fields(['name', 'first_name', 'last_name', 'email'])->user(); 
+        $getInfo = Socialite::driver($provider)->fields(['name', 'first_name', 'last_name', 'email'])->user();
+
         if($user = User::where('email', $getInfo->email)->first()) {
             return $this->authAndRedirect($user);
         } 
@@ -54,7 +57,7 @@ class SocialController extends Controller
         return redirect('/complete');
     }
 
-    // Login y redirección
+    // Login y Redirección
     public function authAndRedirect($user)
     {
         auth()->login($user);

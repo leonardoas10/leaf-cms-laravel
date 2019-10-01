@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
+use App;
 use App\Post;
 use App\Category;
-use App;
 use App\Http\Requests\PostEditRequest;
 use App\Http\Requests\PostRequest;
 

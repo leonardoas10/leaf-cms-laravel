@@ -1,5 +1,4 @@
 @extends('client.layout')
-
 @section('content')
 
 <div class="card-body">

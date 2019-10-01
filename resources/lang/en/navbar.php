@@ -18,6 +18,7 @@ return [
     'logout' => 'Log Out',
     'login' => 'Log In',
     'register' => 'Register',
+    'about' => 'About Leaf Shared',
 
     // --------- NAVBAR ADMIN ------------
     'users_online' => 'Users Online',
