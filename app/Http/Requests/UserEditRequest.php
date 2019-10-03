@@ -26,7 +26,9 @@ class UserEditRequest extends FormRequest
         return [
             'firstname' => 'required|alpha|min:3',
             'lastname' => 'required|alpha|min:3',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'password' => 'nullable|confirmed|min:8',
+            'password_confirmation' => 'nullable|min:8',
         ];
     }
 }

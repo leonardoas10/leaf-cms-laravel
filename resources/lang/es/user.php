@@ -34,7 +34,7 @@ return [
     'profile_image' => 'Imagen de Perfil',
     'add_user' => 'Crear Usuario',
     'photo' => 'Foto',
-    'edit_user' => 'Editar Usuario',
+    'edit_user' => 'Actualizar',
     'quote_1' => 'Cuando estas descansando...',
     'quote_2' => 'Hay otra persona que esta trabajando para ser mejor en',
     'quote_3' => 'Lo que tu quieres tener exito',

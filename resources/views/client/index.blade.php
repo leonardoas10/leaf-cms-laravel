@@ -21,8 +21,9 @@
                         <div class="panel-body login-card links-color">
                             <div class="text-justify">
                                 <h5>{{ __('about.purpose') }}</h5>
-                                <h5 class="text-center">{{ __('about.below_you_find') }}</h5>
-                                <a href="{{ route('about.index') }}">{{ __('sidebar.know_more_here') }}</a>
+                                <div class="col-md-3 offset-md-2  col-centered">
+                                    <a href="{{ route('about.index') }}">{{ __('sidebar.know_more_here') }}</a>
+                                </div>
                             </div>
                         </div>     
                     </div>
@@ -34,7 +35,14 @@
     @foreach ($posts as $post)
         @if ($post->status === "Published" || Auth::check())
             <h2><a class="post-title" href="{{ route('post.show', $post->id ) }}">{{$post->title}}</a></h2>
-            <p class="lead">{{__('index.posted_by')}} {{$post->user}}</p>
+            <p class="lead margin-bottom-zero">{{__('index.posted_by')}} 
+                @if ($post->owner->provider_id > 1)
+                    <img class="img-profile-post" src="{{$post->owner->image}}" alt="">
+                @else
+                    <img class="img-profile-post" src="{{asset('images/' . $post->owner->image)}}" alt=""> 
+                @endif
+                {{$post->user}}
+            </p>
             <p><span class="glyphicon glyphicon-time time-icon"></span> {{__('index.posted_on')}} {{$post->created_at}}</p>
             <hr class="hr-post">
             <a href="{{ route('post.show', $post->id ) }}">
@@ -43,7 +51,6 @@
             <br>
             <div class="text-justify">{!! Str::limit(strip_tags($post->content), 180) !!}</div>
             <br>
-
             <a class="btn btn-primary read-more" href="{{ route('post.show', ['post' => $post->id ]) }}">{{__('index.read_more')}} <span class="glyphicon glyphicon-chevron-right"></span></a>
         @endif
     @endforeach

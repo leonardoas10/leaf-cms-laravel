@@ -102,7 +102,9 @@
         </div>
     </table>
 </div>
-<script>bulkOperations('user', "{{ csrf_token() }}");</script>
+@push('bulk_operator')
+    <script>bulkOperations('user', "{{ csrf_token() }}");</script>
+@endpush   
 @endsection
 
 

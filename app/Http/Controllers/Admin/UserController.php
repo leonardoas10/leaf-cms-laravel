@@ -32,6 +32,8 @@ class UserController extends Controller
 
     public function create()
     {
+        $this->authorize('create', User::class);
+
         return view('admin.add_user');
     }
  
@@ -59,6 +61,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
+
         $user['username'] = ucwords($user['username']);
         $user['firstname'] = ucwords($user['firstname']);
         $user['lastname'] = ucwords($user['lastname']);
@@ -68,22 +72,17 @@ class UserController extends Controller
 
     public function update(User $user, UserEditRequest $request)
     {
-        $data = $request->all();
+        $this->authorize('update', $user);
 
+        $data = $request->all();
         if($data['password'] === null) {
             $data = $request->except('password');
         } else {
-            $data = $request->validate([
-                'password' => 'required|confirmed|min:8',
-                'password_confirmation' => 'required|min:8',
-            ]);
             $data['password'] = Hash::make($data['password']);
         }
 
         if(auth()->user()->provider_id === null) {
-            $data = $request->validate([
-                'username' => 'required|alpha|min:3',
-            ]);
+            $request['username'] = 'required|alpha|min:3';
         }
 
         if($request->hasFile('image')) {
@@ -93,6 +92,7 @@ class UserController extends Controller
             $data['image'] = $fileName;
         }
 
+     
         $user->update($data);
 
         return redirect('admin/profile/1')->with('success', __('success.update_user') . ' ' . $data['firstname'] . ' ' . $data['lastname']); 
@@ -100,8 +100,10 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        $this->authorize('delete', $user);
+
         $user->delete();
-        
+    
         return redirect('admin/users')->with('success', __('success.delete_user'));
     }
 

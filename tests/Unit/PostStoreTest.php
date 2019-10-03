@@ -21,7 +21,8 @@ class PostStoreTest extends TestCase
 
         $this->actingAs($user)->get('admin/posts');
 
-        $title = $this->faker->name;
+        $title = $this->faker->firstName;
+        var_dump($title);
         $payload = [
             'title' => $title,
             'category_id' => $category->id,

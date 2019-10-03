@@ -60,11 +60,13 @@
         </div>
         <div class="col-md-4">
             <div class="flex-wrap">
-                <div class="col-md-8 col-centered text-center">
-                    <label for="image" class="">{{__('user.profile_image')}}</label>
-                    <input type="file" class="form-control input-background" name="image">
-                    <br>
-                </div>
+                @if ($user->provider_id === null)
+                    <div class="col-md-8 col-centered text-center">
+                        <label for="image" class="">{{__('user.profile_image')}}</label>
+                        <input type="file" class="form-control input-background" name="image">
+                        <br>
+                    </div>
+                @endif
                 <div class="panel-body profile-card col-centered border-image">
                     @if ($user->image === null)
                         <span><i class="fa fa-camera"></i> {{__('user.photo')}}</span>
@@ -75,7 +77,7 @@
                     @endif
                 </div>
                 <br>
-                <div class="col-md-4 col-centered">
+                <div class="col-centered">
                     <input class="btn btn-success submit-buttons" type="submit" name="edit_user" value="{{__('user.edit_user')}}"> 
                 </div>
             </div>

@@ -167,7 +167,9 @@
         </table>
     </div>
 @endif
-<script>bulkOperations('category', "{{ csrf_token() }}");</script>
+@push('bulk_operator')
+    <script>bulkOperations('category', "{{ csrf_token() }}");</script>
+@endpush   
 @endsection
 
 

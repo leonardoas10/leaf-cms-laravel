@@ -56,7 +56,7 @@
         <label for="image">{{__('post.image')}}</label>
         <input type="file" class="form-control input-background" name="image">
         <br>
-        <img width="100" src="{{asset('images/' . $post->image)}}">
+        <img class="border-image" width="100" src="{{asset('images/' . $post->image)}}">
     </div>
     <div class="form-group">
         <label for="tags">{{__('post.tags')}}</label>

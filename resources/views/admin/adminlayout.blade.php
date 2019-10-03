@@ -160,8 +160,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
-    @stack('scripts')
-    @stack('google_chars')
+    @stack('bulk_operator')
 
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script> 
 </body>

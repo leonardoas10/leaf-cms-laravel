@@ -13,7 +13,7 @@ return [
     |
     */
     
-    'posted_by' => 'Publicado por:',
+    'posted_by' => 'Por:',
     'posted_on' => 'Publicado el',
     'read_more' => 'Leer Más',
     'if_you_want_to_comment' => 'Si quieres comentar, registrarte',

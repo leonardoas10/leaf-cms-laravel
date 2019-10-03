@@ -1,7 +1,7 @@
 @extends('admin.adminlayout')
 @section('content')
 
-@if (Auth::user()->role === "Admin" ? $posts->count() < 1 : $subscribers_posts->count() < 1)
+@if ($posts->count() < 1)
     <div class="container">
         <div class="row ">
             <div class="col-md-7 col-centered">
@@ -34,7 +34,7 @@
                 </select>
             </div>
             <div class="col-xs-4 flex-row">
-                <input type="button" name="submit" id="apply" class="btn btn-success submit-buttons" value="{{__('post.apply')}} ">
+                <input type="button" name="submit" id="apply" class="btn btn-success submit-buttons margin-right-more" value="{{__('post.apply')}} ">
                 <a class="btn btn-primary" href="{{ route('posts.create') }}">{{__('post.add_new')}} </a>
             </div>
             <thead>
@@ -58,7 +58,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (Auth::user()->role === "Admin" ? $posts : $subscribers_posts as $post)
+                @foreach ($posts as $post)
                     <tr>
                         <td>
                             <label class="label-checkbox" for="{{$post->id}}">
@@ -87,7 +87,6 @@
                             <button type="button" class="btn-xs btn-danger table-column-size-button-td" data-toggle="modal" data-target="#delete_modal_{{ $post->id }}">
                                 {{ __('post.delete') }}
                             </button>
-    
                             <!-- Modal -->
                             <div class="modal fade" id="delete_modal_{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -98,7 +97,6 @@
                                                 <span class="close-x" aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-    
                                         <form action="{{ route('posts.destroy', $post->id ) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -114,7 +112,6 @@
                                         </form>
                                     </div>
                                 </div>
-                    
                             </div>
                             <!-- End Modal --> 
                         </td>
@@ -125,7 +122,9 @@
     </table>
 </div>
 @endif
-<script>bulkOperations('post', "{{ csrf_token() }}");</script>
+@push('bulk_operator')
+    <script>bulkOperations('post', "{{ csrf_token() }}");</script>
+@endpush
 @endsection
 
 

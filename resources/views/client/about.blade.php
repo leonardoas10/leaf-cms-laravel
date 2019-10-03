@@ -32,7 +32,7 @@
                         <br>
                         <li>{{__('about.asset_10')}}</li>
                     </ul>
-                    <a class="linkedin-link" href="{{route('privacy-policy')}}">Privacy Policy</a>
+                    <a class="linkedin-link" href="{{route('privacy-policy')}}">{{ __('auth.privacy_policy') }}</a>
                 </div>
             </div>
         </div>

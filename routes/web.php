@@ -19,7 +19,7 @@ Route::get('/post/{post}', 'Client\HomeController@show')->name('post.show');
 Route::resource('contact', 'Client\ContactController');
 Route::get('/status', 'AlreadyLogin@index')->name('home');
 Route::get('/about', function() {return view('client.about'); })->name('about.index');
-Route::get('/privacy-policy', function() {return view('leaf-laravel-cms-privacy'); })->name('privacy-policy');
+Route::get('/privacy-policy', function() {return view('privacy-policy'); })->name('privacy-policy');
 
 // ADMIN
 Route::prefix('admin')->middleware('auth')->group(function() {
@@ -33,7 +33,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::patch('/users/{user}', 'Admin\UserController@update')->name('users.update');
     Route::patch('/status/{user}', 'Admin\UserController@updateRole')->name('change.updateRole');
     Route::resource('comments', 'Admin\CommentController')->except(['store']);
-    Route::resource('users', 'Admin\UserController')->except(['show', 'edit', 'update'])->middleware('auth.admin');
+    Route::resource('users', 'Admin\UserController')->except(['update']);
     Route::resources([
         'posts' =>  'Admin\PostController',
         'categories' => 'Admin\CategoryController',

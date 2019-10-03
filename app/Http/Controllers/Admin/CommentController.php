@@ -12,7 +12,7 @@ class CommentController extends Controller
 {
     public function index()
     {
-        $comments = Comment::all();
+        $comments = Comment::latest()->get();
 
         $comments = $comments->map(function ($comment) {
             $comment->content = ucwords($comment->content);
@@ -25,14 +25,14 @@ class CommentController extends Controller
             return $comment;
         });
 
-        $posts = Post::all();
-        $posts = $posts->where('user_id', auth()->user()->id);
+        if(auth()->user()->role === 'Subscriber') {
+            $my_posts = auth()->user()->posts;
+            $my_comments = auth()->user()->comments;
 
+            $comments = $my_posts->pluck('comments')->collapse()->merge($my_comments)->unique()->sortByDesc('created_at');
+        }
 
-        $my_comments = $comments->where('user_id', auth()->user()->id);
-        $subscribers_comments = $posts->pluck('comments')->collapse()->merge($my_comments)->unique();
-
-        return view('admin.comments', compact('comments', 'subscribers_comments'));
+        return view('admin.comments', compact('comments'));
     }
 
     public function create()

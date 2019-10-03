@@ -13,9 +13,9 @@ class Post extends Model
     {
       return $this->belongsTo(Category::class);
     }
-    public function user()
+    public function owner() // owner => 'cause 'user' is used for column 'user' on table 'post'
     {
-      return $this->belongsTo(User::class);
+      return $this->belongsTo(User::class, 'user_id');
     }
     public function comments()
     {

@@ -13,7 +13,7 @@ return [
     |
     */
     
-    'posted_by' => 'Posted by:',
+    'posted_by' => 'By:',
     'posted_on' => 'Posted on',
     'read_more' => 'Read More',
     'if_you_want_to_comment' => 'If you want to comment, register with us!',

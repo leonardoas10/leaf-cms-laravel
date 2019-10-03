@@ -18,7 +18,7 @@ return [
     'logout' => 'Cerrar Sesión',
     'login' => 'Iniciar Sesión',
     'register' => 'Registrate',
-    'about' => 'Sobre Leaf Shared',
+    'about' => 'Sobre la App',
 
     // --------- NAVBAR ADMIN ------------
     'users_online' => 'Usuarios Online',

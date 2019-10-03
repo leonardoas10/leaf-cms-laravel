@@ -1,6 +1,7 @@
 @extends('admin.adminlayout')
 @section('content')
-@if ($comments->count() === 0)
+
+@if ($comments->count() < 1)
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-centered">
@@ -61,7 +62,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (Auth::user()->role === "Admin" ? $comments : $subscribers_comments as $comment)
+                    @foreach ($comments as $comment)
                     <tr>
                         <td>
                             <label class="label-checkbox" for="{{$comment->id}}">
@@ -126,9 +127,10 @@
             </div>
         </table>
     </div>
-@endif         
+@endif      
+@push('bulk_operator')
+    <script>bulkOperations('comment', "{{ csrf_token() }}");</script>
+@endpush   
 @endsection
 
-@push('scripts')
-    <script>bulkOperations('comment', "{{ csrf_token() }}");</script>
-@endpush
+

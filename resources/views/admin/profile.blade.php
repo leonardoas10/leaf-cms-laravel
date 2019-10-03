@@ -4,7 +4,7 @@
 <form action="{{ route('users.edit', $user->id ) }}">
     @csrf
     <div class="col-centered">
-        <div class="col-md-2 col-without-padding ">
+        <div class="col-md-3 col-without-padding ">
             <div class="panel-body profile-card col-centered border-image">
                 @if ($user->image === null)
                     <span><i class="fa fa-camera"></i>{{__('user.photo')}}</span>
@@ -18,10 +18,12 @@
                 <span class="text-center">{{__('user.become_a_member_since')}}:</span>
                 <span class="text-center">{{$user->created_at}}</span>
                 <br>
-            <input class="btn btn-success submit-buttons form-control" type="submit" name="edit_user" value="{{__('user.edit_your_user')}}">
+                <div class="col-centered">
+                    <input class="btn btn-success submit-buttons" type="submit" name="edit_user" value="{{__('user.edit_your_user')}}"> 
+                </div>
             </div>
         </div>
-        <div class="col-md-6 flex-wrap">
+        <div class="col-md-5 flex-wrap">
             <label for="firstname">{{__('user.firstname')}}</label>
             <span class="form-control input-background">{{$user->firstname}}</span>
 

@@ -34,7 +34,7 @@ return [
     'profile_image' => 'Profile Image',
     'add_user' => 'Add User',
     'photo' => 'Photo',
-    'edit_user' => 'Editar Usuario',
+    'edit_user' => 'Update',
     'quote_1' => 'When you are resting...',
     'quote_2' => 'There is another one who is working to be better at...',
     'quote_3' => 'What you want to succeed',

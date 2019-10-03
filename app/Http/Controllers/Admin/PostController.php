@@ -9,11 +9,11 @@ use App\Category;
 use App\Http\Requests\PostEditRequest;
 use App\Http\Requests\PostRequest;
 
-
 class PostController extends Controller
 {
     public function index()
     {
+     
         $posts = Post::all(); 
 
         $posts = $posts->map(function ($post) {
@@ -27,12 +27,15 @@ class PostController extends Controller
             if (App::isLocale('es') && $post->status === "Draft") {
                 $post->status = "Borrador";
             }
+
             return $post;
         });
+   
+        if(auth()->user()->role === 'Subscriber') {
+            $posts = auth()->user()->posts;
+        }
 
-        $subscribers_posts = $posts->where('user_id', auth()->user()->id);
-
-        return view('admin.post', compact('posts', 'subscribers_posts'));
+        return view('admin.post', compact('posts'));
     }
    
     public function create()
@@ -65,12 +68,16 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
+
         $categories = Category::all();
         return view('admin.edit_post', compact('post','categories'));
     }
 
     public function update(Post $post, PostEditRequest $request)
     {
+        $this->authorize('update', $post);
+
         $data = $request->all();
 
         if($request->hasFile('image')) {
@@ -81,12 +88,16 @@ class PostController extends Controller
         }
 
         $post->update($data);
+        
         return redirect('admin/posts')->with('success', __('success.update_post') . ' ' . $data['title']); 
     }
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
+
         $post->delete();
+
         return redirect('admin/posts')->with('success', __('success.delete_post'));
     }
 }

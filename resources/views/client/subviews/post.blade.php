@@ -3,7 +3,14 @@
 @section('content')
 <div class="col-md-7">
     <h2>{{$post->title}}</a></h2>
-    <p class="lead">{{__('index.posted_by')}} {{$post->user}}</p>
+    <p class="lead margin-bottom-zero">{{__('index.posted_by')}} 
+        @if ($post->owner->provider_id > 1)
+            <img class="img-profile-post" src="{{$post->owner->image}}" alt="">
+        @else
+            <img class="img-profile-post" src="{{asset('images/' . $post->owner->image)}}" alt=""> 
+        @endif
+        {{$post->user}}
+    </p>
     <p><span class="glyphicon glyphicon-time time-icon"></span> {{__('index.posted_on')}} {{$post->created_at}}</p>
     <hr class="hr-post">
     <a href="post.php?p_id=">
@@ -60,7 +67,6 @@
     @foreach ($post->comments as $comment)
         @if ($comment->status === "Approved")
             <div class="flex-row margin-bottom-more">
-
                 @if ($comment->user->provider_id > 1)
                     <img class="img-profile-comment" src="{{$comment->user->image}}" alt="">
                 @else

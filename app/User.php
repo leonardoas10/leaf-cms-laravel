@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticable;
 class User extends Authenticable
 {
     use Notifiable;
+    
     const admin = 'Admin';
     const subscriber = 'Subscriber';
 
@@ -25,5 +26,8 @@ class User extends Authenticable
     }
     public function userIsOnline() {
         return Cache::has('user-is-online'. $this->id);
+    }
+    public function isAdmin() {
+        return $this->role === "Admin";
     }
 }

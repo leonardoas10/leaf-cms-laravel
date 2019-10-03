@@ -38,15 +38,20 @@
                 <a class=" navbar-brand navbar-title" href="/">Leaf Shared</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav menu-display-flex-row-iphone-6s">
+                    <span class="nav navbar-nav menu-display-flex-column-iphone-6s menu-padding-left-right-iphone-6s">
                     @foreach ($categories as $category)
-                    <li><a class="navbar-subtitles" href="{{route('category.index', ['category' => $category->id])}}">{{$category->title}}</a></li>
+                        <li><a class="navbar-subtitles" href="{{route('category.index', ['category' => $category->id])}}">{{$category->title}}</a></li>
                     @endforeach
-                    <li><a class="navbar-subtitles" href="{{ route('contact.index') }}">{{ __('navbar.contact') }}</a></li>
-                    <li><a class="navbar-subtitles" href="{{ route('about.index') }}">{{ __('navbar.about') }}</a></li>
+                    </span>
+                    <span class="nav navbar-nav menu-display-flex-column-iphone-6s menu-padding-left-right-iphone-6s">
+                        <li><a class="navbar-subtitles" href="{{ route('contact.index') }}">{{ __('navbar.contact') }}</a></li>
+                        <li><a class="navbar-subtitles" href="{{ route('about.index') }}">{{ __('navbar.about') }}</a></li>
+                    </span>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (auth()->user())
+                    <span class="nav navbar-nav menu-display-flex-row-iphone-6s menu-padding-left-right-iphone-6s menu-margin-left-more-iphone-6s">
                         <li><a class="navbar-subtitles" href="{{ route('admin.index') }}">Admin</a></li>
                         <li><a class="navbar-subtitles" href="{{ route('logout') }}" 
                             onclick="event.preventDefault();
@@ -56,9 +61,12 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
+                    </span>
                     @else
+                    <span class="nav navbar-nav menu-display-flex-row-iphone-6s menu-padding-left-right-iphone-6s menu-margin-left-more-iphone-6s">
                         <li><a class="navbar-subtitles" href="{{ route('login') }}">{{ __('navbar.login') }}</a></li>
                         <li><a class="navbar-subtitles" href="{{ route('register') }}">{{ __('navbar.register') }}</a></li>
+                    </span>
                     @endif
                     <li>
                         @if (App::isLocale('en'))
