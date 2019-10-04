@@ -45,9 +45,11 @@ Auth::routes();
 // LANGUAGE
 Route::post('/lang/{lang}', 'LangController@lang');
 
-// FACEBOOK
+// SOCIAL CONTROLLER
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
-Route::get('/callback/{provider}', 'SocialController@callback');
 Route::get('/complete', 'SocialController@index');
 Route::post('/complete', 'SocialController@store')->name('complete.store');
+Route::get('/callback/{provider}', 'SocialController@callback');
+
+
 

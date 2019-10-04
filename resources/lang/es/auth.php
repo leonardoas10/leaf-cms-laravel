@@ -26,6 +26,7 @@ return [
     'password' => 'Contraseña',
     'confirm_password' => 'Confirmar Contraseña',
     'or_register_with' => 'O registrate con',
+    'or_login_with' => 'O ingresa con',
 
     // complete.blade.php
     'welcome' => 'Bienvenido',

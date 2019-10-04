@@ -63,6 +63,13 @@
             <input type="file" class="form-control input-background" name="image">
         </div>
         <div class="form-group">
+            @error('image')
+                <span class="invalid-feedback red-error" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="form-group">
             <label for="tags">{{__('post.tags')}}</label>
             <input type="text" class="form-control input-background" name="tags" value="{{ old('tags') }}">
         </div>

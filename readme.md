@@ -3,7 +3,7 @@
 
 Leaf Shared is a web application for management content, posts, comments from all users in which any user can manage their own posts, comments, update their profile, create comments on other posts, etc.
 
-Builted with <span style="color:red">Laravel V 5.8.</span> it contains a system based on CMS (Content Management System) with arquitecture MVC (Modal View Controller) using Facebook Login as an asset to make look as a real web page. It performe as:
+Builted with <span style="color:red">Laravel V 5.8.</span> it contains a system based on CMS (Content Management System) with arquitecture MVC (Modal View Controller) using Facebook, Google, Linkedin as an asset to Login, making look as a real web page. It performe as:
 
 
 - CMS, where an admin can manipulate and controlate the data without others users (subscribers) seeing what happen under the hood.

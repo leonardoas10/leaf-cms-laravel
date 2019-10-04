@@ -46,10 +46,15 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="form-group row mb-0">
-                            <div class="col-right">
-                                <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary"><i class="fa fa-facebook margin-right-more-facebook-icon"></i> {{__('auth.login_with')}} Facebook</a>
-                            </div>
+                        <div class="form-group row mb-0 text-center">
+                                {{__('auth.or_login_with')}} 
+                        </div>
+                        <div class="form-group row mb-0 text-center">
+                            <a href="{{ url('/auth/redirect/Facebook') }}" class="btn btn-primary social-width-button"><i class="fa fa-facebook"></i> Facebook</a>
+                            <a class="btn btn-danger social-width-button" href="{{ url('/auth/redirect/Google') }}">
+                                <i class="fa fa-google"></i> Google
+                            </a>
+                            <a href="{{ url('/auth/redirect/Linkedin') }}" class="btn btn-primary social-width-button"><i class="fa fa-linkedin"></i> Linkedin</a>
                         </div>
                     </div><!-- Body-->
                 </div>

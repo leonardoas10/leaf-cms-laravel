@@ -217,6 +217,11 @@
     background-color: var(--color-background) !important; 
 }
 
+/* SOCIAL BUTTON */
+.social-width-button {
+    width: 10rem !important;
+}
+
 /* -----------------MEDIA QUERIES----------------------- */
 @media screen and (max-width: 450px) {
     .hide-on-mobile {

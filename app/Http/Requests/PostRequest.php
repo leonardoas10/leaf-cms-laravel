@@ -29,7 +29,7 @@ class PostRequest extends FormRequest
             'content' => 'required',
             'tags' => 'required|alpha',
             'status' => 'required|starts_with:Published,Draft|ends_with:Published,Draft|alpha',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }
