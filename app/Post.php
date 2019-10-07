@@ -13,7 +13,7 @@ class Post extends Model
     {
       return $this->belongsTo(Category::class);
     }
-    public function owner() // owner => 'cause 'user' is used for column 'user' on table 'post'
+    public function owner() // owner => 'cause 'user' is used for column 'user' on table 'posts'
     {
       return $this->belongsTo(User::class, 'user_id');
     }

@@ -7,7 +7,7 @@ Builted with <span style="color:red">Laravel V 5.8.</span> it contains a system 
 
 
 - CMS, where an admin can manipulate and controlate the data without others users (subscribers) seeing what happen under the hood.
-- Middlewares for prevent the intent to navigate to urls that only access admins, also for check the total users online.
+- Policies, Gates and Middlewares for prevent the intent to navigate to urls that only access admins, also for check the total users online.
 - An easy admin/users dashboard to see the all content of the account, builted with Google Chars.
 - Language Change System. EN and ES
 - System to retrieve the forgot password using Mailtrap.
@@ -24,7 +24,7 @@ Builted with <span style="color:red">Laravel V 5.8.</span> it contains a system 
 - Create your own database, preferly Mysql.
 - Copy the .env.example file. `cp .env.example .env`
 - Add database information, to the .env file, allowing Laravel to connect to the database.
-- Add your Facebook Login credentials in the .env file, to connect to facebook developers. 
+- Add your Facebook, Google, Linkedin Login credentials in the .env file, to connect to facebook developers. 
 - Generate an app encryption key, Laravel requires you to have an app encryption key. `php artisan key:generate`
 - Migrate the database. `php artisan migrate`
 

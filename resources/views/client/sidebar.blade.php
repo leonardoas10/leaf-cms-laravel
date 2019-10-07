@@ -19,7 +19,8 @@
     <div class="well">
         @if (Auth::check())
             <div class="text-center">
-                <h4>{{ __('login.logged_in_as') }} {{Auth::user()->username}}</h4>
+                <h4>{{ __('login.logged_in_as') }}</h4>
+                <h4>{{Auth::user()->username}}</h4>
             </div>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
@@ -67,7 +68,7 @@
                 </div>
             </form> 
             <div class="form-group row mb-0 text-center">
-                    {{__('auth.or_login_with')}} 
+                {{__('auth.or_login_with')}} 
             </div>
             <div class="form-group row mb-0 form-group-less-margin text-center">
                 <a href="{{ url('/auth/redirect/Facebook') }}" class="btn btn-primary social-width-button"><i class="fa fa-facebook"></i> Facebook</a>

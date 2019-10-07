@@ -40,7 +40,7 @@ return [
     'quote_3' => 'Lo que tu quieres tener exito',
     'quote_4' => '...Anonimo',
     'this_website' => 'Este sitio web fue construido con el Framework Laravel V 5.8.',
-    'become_a_member_since' => 'Un miembro desde',
+    'become_a_member_since' => 'Miembro desde',
     'edit_your_user' => 'Edita Tu Usuario',
 
     // Delete Modal
