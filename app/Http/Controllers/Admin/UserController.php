@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         $data = $request->all();
         $data['password'] = Hash::make($data['password']);
-
+    
         if($request->hasFile('image')) {
             $fileName = $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('/', $fileName);
@@ -49,6 +49,7 @@ class UserController extends Controller
         }
 
         User::create($data);    
+        
         return redirect('admin/users')->with('success', __('success.create_user') . ' ' . ucwords($data['username'])); 
 
     }

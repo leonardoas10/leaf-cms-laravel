@@ -18,7 +18,7 @@ return [
     'below_you_find' => 'Below you find post from users.',
     'builted_with' => "Builted with Laravel V 5.8. it contains a system based on CMS (Content Management System) with arquitecture MVC (Modal View Controller) using Facebook, Google, Linkedin as an asset to Login, making look as a real web page. It performe as:",
     'asset_1' => "CMS, where an admin can manipulate and controlate the data without others users (subscribers) seeing what happen under the hood.",
-    'asset_2' => 'Middlewares for prevent the intent to navigate to urls that only access admins, also for check the total users online.',
+    'asset_2' => 'Policies, Gates and Middlewares for prevent the intent to navigate to urls that only access admins, also for check the total users online.',
     'asset_3' => 'An easy admin/subscriber dashboard to see the all content of the account, builted with Google Chars.',
     'asset_4' => 'Language Change System (EN/ES).',
     'asset_5' => 'System to retrieve the forgot password using Mailtrap.',

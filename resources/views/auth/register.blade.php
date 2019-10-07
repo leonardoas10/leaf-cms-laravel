@@ -105,7 +105,7 @@
                     </div>
                 </form>
                 <div class="form-group row mb-0 text-center">
-                        {{__('auth.or_register_with')}} 
+                    {{__('auth.or_register_with')}} 
                 </div>
                 <div class="form-group row mb-0 text-center">
                     <a href="{{ url('/auth/redirect/Facebook') }}" class="btn btn-primary social-width-button"><i class="fa fa-facebook"></i> Facebook</a>

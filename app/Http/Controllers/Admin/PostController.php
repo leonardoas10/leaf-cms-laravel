@@ -77,8 +77,11 @@ class PostController extends Controller
     public function update(Post $post, PostEditRequest $request)
     {
         $this->authorize('update', $post);
+       
+
 
         $data = $request->all();
+  
 
         if($request->hasFile('image')) {
             // Storage::delete($post->photo); TODO
@@ -88,6 +91,7 @@ class PostController extends Controller
         }
 
         $post->update($data);
+   
         
         return redirect('admin/posts')->with('success', __('success.update_post') . ' ' . $data['title']); 
     }
