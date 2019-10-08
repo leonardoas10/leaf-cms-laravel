@@ -24,7 +24,7 @@ Builted with <span style="color:red">Laravel V 5.8.</span> it contains a system 
 - Create your own database, preferly Mysql.
 - Copy the .env.example file. `cp .env.example .env`
 - Add database information, to the .env file, allowing Laravel to connect to the database.
-- Add your Facebook, Google, Linkedin Login credentials in the .env file, to connect to facebook developers. 
+- Add your Facebook, Google, Linkedin Login credentials in the .env file. 
 - Generate an app encryption key, Laravel requires you to have an app encryption key. `php artisan key:generate`
 - Migrate the database. `php artisan migrate`
 
