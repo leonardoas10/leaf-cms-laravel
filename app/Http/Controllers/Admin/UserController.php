@@ -76,6 +76,7 @@ class UserController extends Controller
         $this->authorize('update', $user);
 
         $data = $request->all();
+  
         if($data['password'] === null) {
             $data = $request->except('password');
         } else {

@@ -21,6 +21,41 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
     <link rel="shortcut icon" href="{{asset('images/leaf-icon.png')}}" />
 </head>
+@php
+    $active_admin = '';
+    $active_dashboard = '';
+    $active_posts = '';
+    $active_categories = '';
+    $active_comments = '';
+    $active_users = '';
+    $active_profile = '';
+    switch (basename($_SERVER['PHP_SELF'])) {
+        case 'admin':
+            $active_admin = 'active';
+        break;
+        case 'dashboard':
+            $active_dashboard = 'active';
+        break;
+        case 'posts':
+            $active_posts = 'active';
+        break;
+        case 'categories':
+            $active_categories = 'active';
+        break;
+        case 'comments':
+            $active_comments = 'active';
+        break;
+        case 'users':
+            $active_users = 'active';
+        break;
+        case '1':
+            $active_profile = 'active';
+        break;
+        
+        default:
+        break;
+    }
+@endphp
 
 <body>
     <div id="wrapper">
@@ -66,11 +101,11 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav navbar-vertical">
-                    <li><a href=" {{ route('admin.index') }}"><i class="fa fa-fw fa-dashboard"></i>{{__('navbar.my_data')}}</a></li>
+                    <li class="{{$active_admin}}"><a href=" {{ route('admin.index') }}"><i class="fa fa-fw fa-dashboard"></i>{{__('navbar.my_data')}}</a></li>
                     @if (Auth::user()->role === "Admin")
-                        <li><a href=" {{ route('admin.dashboard') }}"><i class="fa fa-fw fa-dashboard"></i>{{__('navbar.dashboard')}}</a></li>
+                        <li class="{{$active_dashboard}}"><a href=" {{ route('admin.dashboard') }}"><i class="fa fa-fw fa-dashboard"></i>{{__('navbar.dashboard')}}</a></li>
                     @endif
-                    <li>
+                    <li class="{{$active_posts}}">
                         <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i
                                 class="fa fa-fw fa-arrows-v "></i>{{__('navbar.posts')}}<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="posts_dropdown" class="collapse navbar-vertical">
@@ -79,13 +114,13 @@
                         </ul>
                     </li>
                     @if (Auth::user()->role === "Admin")
-                        <li><a href="{{ route('categories.index') }}"><i class="fa fa-fw fa-wrench"></i> {{__('navbar.categories')}}</a></li>
+                        <li class="{{$active_categories}}"><a href="{{ route('categories.index') }}"><i class="fa fa-fw fa-wrench"></i> {{__('navbar.categories')}}</a></li>
                     @endif
                     
-                    <li class=""><a href="{{ route('comments.index') }}"><i class="fa fa-fw fa-comment"></i> {{__('navbar.comments')}}</a></li>
+                    <li class="{{$active_comments}}"><a href="{{ route('comments.index') }}"><i class="fa fa-fw fa-comment"></i> {{__('navbar.comments')}}</a></li>
             
                     @if (Auth::user()->role === "Admin")
-                        <li>
+                        <li class="{{$active_users}}">
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i
                                     class="fa fa-users"></i> {{__('navbar.users')}} <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse navbar-vertical">
@@ -95,7 +130,7 @@
                         </li>
                     @endif
                     
-                    <li class="active"><a href="{{ route('user.profile', 1) }}"><i class="fa fa-address-card-o"></i> {{__('navbar.profile')}}</a></li> 
+                    <li class="{{$active_profile}}"><a href="{{ route('user.profile', 1) }}"><i class="fa fa-address-card-o"></i> {{__('navbar.profile')}}</a></li> 
                     {{-- TODO PARAMETER PROFILE ROUTE --}}
                     <li>
                         @if (App::isLocale('en'))

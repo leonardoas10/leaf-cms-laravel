@@ -77,11 +77,8 @@ class PostController extends Controller
     public function update(Post $post, PostEditRequest $request)
     {
         $this->authorize('update', $post);
-       
-
-
+ 
         $data = $request->all();
-  
 
         if($request->hasFile('image')) {
             // Storage::delete($post->photo); TODO

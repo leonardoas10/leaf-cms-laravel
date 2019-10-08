@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="col-md-7">
+    @if (\Session::has('success'))
+        <div class="alert alert-success success-timer margin-bottom-zero text-center">
+            {{Session::get('success') }}
+        </div>
+    @endif
     <h2>{{$post->title}}</a></h2>
     <p class="lead margin-bottom-zero">{{__('index.posted_by')}} 
         @if ($post->owner->provider_id > 1)
@@ -13,9 +18,7 @@
     </p>
     <p><span class="glyphicon glyphicon-time time-icon"></span> {{__('index.posted_on')}} {{$post->created_at}}</p>
     <hr class="hr-post">
-    <a href="post.php?p_id=">
-        <img class="img-responsive border-image" src="{{asset('images/' . $post->image)}}" alt="/post_image">
-    </a>
+    <img class="img-responsive border-image" src="{{asset('images/' . $post->image)}}" alt="/post_image">
     <br>
     <div class="text-justify">{!! $post->content !!}</div>
 
@@ -55,12 +58,6 @@
                 <button type="submit" class="btn btn-primary comment-button" name="create_comment">{{__('index.submit')}}</button>
             </form>
         </div>   
-
-        @if (\Session::has('success'))
-            <div class="alert alert-success success-timer margin-bottom-zero text-center">
-                {{Session::get('success') }}
-            </div>
-        @endif
     @endauth
 
     <!-- Comment -->
