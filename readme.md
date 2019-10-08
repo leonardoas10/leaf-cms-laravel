@@ -29,3 +29,13 @@ Builted with <span style="color:red">Laravel V 5.8.</span> it contains a system 
 - Migrate the database. `php artisan migrate`
 
 Plus: For use the app as Admin, create your own admin user with Tinker or database viewer in the table Users, and put 'Admin' as a role.
+
+## Screenshots
+Login.
+![](public/images/Screen%20Shot%202019-10-08%20at%2011.40.52%20AM.png)
+Admin, management posts.
+![](public/images/Screen%20Shot%202019-10-08%20at%2012.52.42%20PM.png)
+Home page, as a guest.
+![](public/images/Screen%20Shot%202019-10-08%20at%2012.40.49%20PM.png)
+Comments about a post.
+![](public/images/Screen%20Shot%202019-10-08%20at%201.19.59%20PM.png)
