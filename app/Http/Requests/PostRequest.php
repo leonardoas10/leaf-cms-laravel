@@ -27,7 +27,7 @@ class PostRequest extends FormRequest
             'title' => 'required|regex:/^[\pL?\s]+$/u|unique:posts',
             'category_id' => 'required|exists:categories,id',
             'content' => 'required',
-            'tags' => 'required|alpha',
+            'tags' => 'required|regex:/^[\pL\s]+$/u',
             'status' => 'required|starts_with:Published,Draft|ends_with:Published,Draft|alpha',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];

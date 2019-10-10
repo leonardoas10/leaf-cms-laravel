@@ -12,7 +12,9 @@ class HomeController extends Controller
         $search = request('search');
         
         if($category->exists) {
-            $posts = $category->posts()->latest()->paginate(2);
+            $user_admin_posts = $category->posts()->latest()->withAdmin('leoaranguren10@gmail.com')->get();
+            $rest_posts = $category->posts()->latest()->get();
+            $posts =  $user_admin_posts->merge($rest_posts)->unique()->paginate(2);
         } 
         else if($search) {
             $word = '%' . $search . '%';
@@ -23,7 +25,9 @@ class HomeController extends Controller
             request()->session()->flash('success', __('success.we_found') . $search); 
         }
         else {
-            $posts = Post::latest()->paginate(2);
+            $user_admin_posts = Post::latest()->adminPosts('leoaranguren10@gmail.com')->get();
+            $rest_posts = Post::latest()->get();
+            $posts = $user_admin_posts->merge($rest_posts)->unique()->paginate(2);
         }
 
         return view('client.index', compact('posts'));

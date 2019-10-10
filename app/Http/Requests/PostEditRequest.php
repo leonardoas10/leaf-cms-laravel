@@ -26,7 +26,7 @@ class PostEditRequest extends FormRequest
         return [
             'category_id' => 'required|exists:categories,id',
             'content' => 'required',
-            'tags' => 'required|alpha',
+            'tags' => 'required|regex:/^[\pL\s]+$/u',
             'status' => 'required|starts_with:Published,Draft|ends_with:Published,Draft|alpha',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
