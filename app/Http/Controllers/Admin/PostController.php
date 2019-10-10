@@ -14,7 +14,7 @@ class PostController extends Controller
     public function index()
     {
      
-        $posts = Post::all(); 
+        $posts = Post::all()->sortByDesc('created_at'); 
 
         $posts = $posts->map(function ($post) {
             $post->title = ucwords($post->title);

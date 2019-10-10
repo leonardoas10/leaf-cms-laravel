@@ -1,4 +1,4 @@
-
+[Website](https://leafproyect.000webhostapp.com/)
 ## Leaf Shared
 
 Leaf Shared is a web application for management content, posts, comments from all users in which any user can manage their own posts, comments, update their profile, create comments on other posts, etc.
@@ -27,8 +27,8 @@ Builted with <span style="color:red">Laravel V 5.8.</span> it contains a system 
 - Add your Facebook, Google, Linkedin Login credentials in the .env file. 
 - Generate an app encryption key, Laravel requires you to have an app encryption key. `php artisan key:generate`
 - Migrate the database. `php artisan migrate`
-
-Plus: For use the app as Admin, create your own admin user with Tinker or database viewer in the table Users, and put 'Admin' as a role.
+- The app as Admin: create your own admin user with Tinker or database viewer in the table Users, and put 'Admin' as a role.
+- Config HomeController.php, put your admin email in the function adminPosts() to retrieve and show first your posts.
 
 ## Screenshots
 Login.

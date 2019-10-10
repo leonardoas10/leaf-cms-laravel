@@ -30,4 +30,10 @@ class Post extends Model
     public function incrementViews() {
       return $this->increment('views_count');
     }
+
+    public function scopeAdminPosts($query, $email) {
+      return $query->whereHas('owner', function ($query) use ($email) {
+        $query->where('email', $email);
+      });
+    }
 }
