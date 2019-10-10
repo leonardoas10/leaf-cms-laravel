@@ -26,5 +26,5 @@ return [
     'asset_7' => 'Formulario de contacto utilizando phpMailer.',
     'asset_8' => 'Cargar fotos de perfil de cada usuario.',
     'asset_9' => 'Un módulo de búsqueda de etiquetas de publicación.',
-    'asset_10' => 'Responsable para iphone 6S',
+    'asset_10' => 'Media Querys para Iphones: 6S - 6/7/8 plus - X.',
 ];

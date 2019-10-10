@@ -26,6 +26,6 @@ return [
     'asset_7' => 'Contact form using phpMailer.',
     'asset_8' => 'The upload profile pictures from every user.',
     'asset_9' => 'A module search for tags post.',
-    'asset_10' => 'Responsive for Iphone 6S.',
+    'asset_10' => 'Media Querys for Iphones: 6S - 6/7/8 plus - X.',
 
 ];

@@ -187,19 +187,34 @@ input[type="checkbox"]:checked + .cbx {
     color: var(--color) !important;
     opacity: 0.7 !important;
 }
-/* -----------------MEDIA QUERIES----------------------- */
-@media screen and (max-width: 450px) {
 
-}
 
-/* -----------------MEDIA QUERIES FOR IPHONE 6S----------------------- */
-
-@media screen and (max-width: 450px) {
+/* -----------------MEDIA QUERIES FOR IPHONE 6S----------------------- GOOGLE DEV TOOLS = 375 X 550*/
+@media screen and (max-width: 375px) and (max-height: 550px) {
     .position-for-iphone-admin {
         position: fixed;
-        left: 55%;
-        bottom: 73%;
+        left: 24rem;
+        bottom: 40rem;
     }
-   
 }
+
+/* -----------------MEDIA QUERIES FOR IPHONE 6 plus----------------------- GOOGLE DEV TOOLS = 414 X 736*/
+@media  screen and (max-width: 414px) and (max-height: 736px)  {
+    .position-for-iphone-admin {
+        position: fixed;
+        left: 28rem;
+        bottom: 58.7rem;
+    }
+}
+
+/* -----------------MEDIA QUERIES FOR IPHONE X----------------------- GOOGLE DEV TOOLS = 375 X 812*/
+@media screen and (max-width: 375px) and (max-height: 812px)    {
+    .position-for-iphone-admin {
+        position: fixed;
+        left: 24rem;
+        bottom: 66.3rem;
+    }
+}
+
+
 

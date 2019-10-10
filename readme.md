@@ -1,5 +1,5 @@
 
-Look the [Website](https://leafproyect.000webhostapp.com/).
+Look the [Website](https://leafproyect.000webhostapp.com/) (In case it returns 502 Bad Gateway, you have to wait until the host fix the problem).
 ## Leaf Shared
 
 Leaf Shared is a web application for management content, posts, comments from all users in which any user can manage their own posts, comments, update their profile, create comments on other posts, etc.
@@ -16,7 +16,7 @@ Builted with <span style="color:red">Laravel V 5.8.</span> it contains a system 
 - Contact form using phpMailer.
 - The upload profile pictures from every user.
 - A module search for tags post.
-- CSS media querys for Iphone 6S.
+- CSS media querys for Iphones: 6S - 6/7/8 plus - X.
 
 ## Run the app
 
