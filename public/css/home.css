@@ -245,12 +245,12 @@
         font-size: 2rem !important;
     }
 }
-/* -----------------MEDIA QUERIES FOR IPHONE 6S----------------------- GOOGLE DEV TOOLS = 375 X 550*/
-@media screen and (max-width: 375px) and (max-height: 550px) {
+/* -----------------MEDIA QUERIES FOR IPHONE 6S - X ----------------------- GOOGLE DEV TOOLS = 375 X 550 || X = 375 X 812 */
+@media screen and (min-width: 375px) and (max-width: 378px){
     .position-for-iphone-6s {
         position: fixed;
         left: 24rem;
-        bottom: 44.5rem;
+        top: 7rem;
     }
     .margin-left-for-facebook-login-iphone-6s {
         margin-left: 13.3rem;
@@ -274,11 +274,11 @@
 }
 
 /* -----------------MEDIA QUERIES FOR IPHONE 6 plus----------------------- GOOGLE DEV TOOLS = 414 X 736*/
-@media  screen and (max-width: 414px) and (max-height: 736px)  {
+@media screen and (min-width: 414px) and (max-width: 417px) {
     .position-for-iphone-6s {
         position: fixed;
         left: 29rem;
-        bottom: 63rem;
+        top: 9rem;
     }
     .margin-left-for-facebook-login-iphone-6s {
         margin-left: 13.3rem;
@@ -301,34 +301,6 @@
     }
 }
 
-
-/* -----------------MEDIA QUERIES FOR IPHONE X----------------------- GOOGLE DEV TOOLS = 375 X 812*/
-@media screen and (max-width: 375px) and (max-height: 812px)  {
-    .position-for-iphone-6s {
-        position: fixed;
-        left: 24rem;
-        bottom: 70.5rem;
-    }
-    .margin-left-for-facebook-login-iphone-6s {
-        margin-left: 13.3rem;
-    }
-    .menu-display-flex-row-iphone-6s {
-        display: flex;
-        flex-flow: row;
-    }
-    .menu-display-flex-column-iphone-6s {
-        display: flex;
-        flex-flow: column !important;
-    }
-    .menu-padding-left-right-iphone-6s {
-        padding-right: 15px;
-        padding-left: 15px;
-    }
-
-    .menu-margin-left-more-iphone-6s {
-        margin-left: 10rem;
-    }
-}
 
 
 
