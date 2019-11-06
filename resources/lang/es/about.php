@@ -14,6 +14,7 @@ return [
     */
 
     'about' => 'Sobre',
+    'download_description' => 'Descargar Descripción',
     'purpose' => 'Es un sitio web con el propósito de compartir contenido entre usuarios sobre cualquier tema de lenguajes de programación, en el que cada usuario puede administrar sus propias publicaciones con la posibilidad de comentar sobre otros, generando una comunidad en la que se comparte información.',
     'below_you_find' => 'Debajo encontraras las publicaciones creadas por usuarios.',
     'builted_with' => "Construido con Laravel V 5.8. contiene un sistema basado en CMS (Content Management System) con arquitectura MVC (Modal View Controller) usando el ingreso de Facebook, Google, Linkedin como un activo para hacer que parezca una página web real. Actúa como:",
@@ -27,4 +28,5 @@ return [
     'asset_8' => 'Cargar fotos de perfil de cada usuario.',
     'asset_9' => 'Un módulo de búsqueda de etiquetas de publicación.',
     'asset_10' => 'Media Querys para Iphones: 6S - 6/7/8 plus - X.',
+    'asset_11' => 'Descargar pdfs con Laravel dompdf.'
 ];
