@@ -17,6 +17,7 @@ Builted with <span style="color:red">Laravel V 5.8.</span> it contains a system 
 - The upload profile pictures from every user.
 - A module search for tags post.
 - CSS media querys for Iphones: 6S - 6/7/8 plus - X.
+- Download pdfs with Laravel dompdf.
 
 ## Run the app
 

@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            <a class="linkedin-link" href="{{ route('show_pdf') }}" target="_blank" ><i class="fa fa-file-pdf-o"> {{__('about.download_description')}}</i></a>
             <div class="panel-body login-card">
                 <div class="text-center">
                     <h4 class="navbar-title">LEAF SHARED</h4>
@@ -31,6 +32,8 @@
                         <li>{{__('about.asset_9')}}</li>
                         <br>
                         <li>{{__('about.asset_10')}}</li>
+                        <br>
+                        <li>{{__('about.asset_11')}}</li>
                     </ul>
                     <a class="linkedin-link" href="{{route('privacy-policy')}}">{{ __('auth.privacy_policy') }}</a>
                 </div>

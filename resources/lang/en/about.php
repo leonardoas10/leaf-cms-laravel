@@ -14,6 +14,7 @@ return [
     */
 
     'about' => 'About',
+    'download_description' => 'Download Description',
     'purpose' => "It's a website with the purpose of sharing content between users about any topic of programming languages, in which each user can management their own post with the possibility of commenting others, generating a community in which information is shared.",
     'below_you_find' => 'Below you find post from users.',
     'builted_with' => "Builted with Laravel V 5.8. it contains a system based on CMS (Content Management System) with arquitecture MVC (Modal View Controller) using Facebook, Google, Linkedin as an asset to Login, making look as a real web page. It performe as:",
@@ -27,5 +28,5 @@ return [
     'asset_8' => 'The upload profile pictures from every user.',
     'asset_9' => 'A module search for tags post.',
     'asset_10' => 'Media Querys for Iphones: 6S - 6/7/8 plus - X.',
-
+    'asset_11' => 'Download pdfs with Laravel dompdf.'
 ];

@@ -20,6 +20,10 @@ Route::resource('contact', 'Client\ContactController');
 Route::get('/status', 'AlreadyLogin@index')->name('home');
 Route::get('/about', function() {return view('client.about'); })->name('about.index');
 Route::get('/privacy-policy', function() {return view('privacy-policy'); })->name('privacy-policy');
+Route::get('pdf', function() {
+    $pdf = PDF::loadView('client.about_pdf');
+    return $pdf->stream();
+})->name('show_pdf');
 
 // ADMIN
 Route::prefix('admin')->middleware('auth')->group(function() {
